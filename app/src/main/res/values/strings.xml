@@ -1,3 +1,171 @@
 <resources>
     <string name="app_name">Roomie</string>
+    <string name="dots">...</string>
+    <string name="set_roommate_preferences">Set Roommate Preferences</string>
+    <string name="major_minor">Major|Minor</string>
+    <string name="disclaimer">Edit your profile for other\'s to view! We highly encourage inputting as much information as possible as this allows for more precise matches. Any information you enter may be used in our matching algorithm and may be shown to the public in your profile. If you wish for anything to not be disclosed, please leave the question unanswered.
+</string>
+    <string name="write_a_biography_for_others_to_get_to_know_you">Write a biography for others to get to know you!</string>
+    <string name="profileimage">profileImage</string>
+    <string name="name_and_pronouns">Name and (Pronouns)</string>
+    <string name="dormCh">Select your preferred choice of dorms.</string>
+    <string name="biog">Write a biography for matches to read! This may include hobbies, self descriptions, or anything you may want to attract Roommates. </string>
+    <string name="profileimageinput">profileImageInput</string>
+    <string name="purplebacking">purplebacking</string>
+    <string name="purplespacerone">purpleSpacerOne</string>
+    <string name="set">Settings</string>
+    <string name="backing">backing</string>
+    <string name="reset_profile">Reset Profile</string>
+    <string name="reset_roommate_preferences">Reset Roommate Preferences</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="setting">setting</string>
+    <string name="roommate_preferences">Roommate Preferences</string>
+    <string name="roommatedisclaimer">roommateDisclaimer</string>
+    <string name="save_preferences">Save Preferences</string>
+    <string name="university_of_wisconsin_eau_claire">University of Wisconsin - Eau Claire</string>
+    <string name="divider1">divider1</string>
+    <string name="divider2">divider2</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="navbarbacking">navBarBacking</string>
+    <string name="p">P</string>
+    <string name="m">M</string>
+    <string name="s">S</string>
+    <string name="log_in">Log In</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="username">Username</string>
+    <string name="roomie">Roomie</string>
+    <string name="set_username">Set Username</string>
+    <string name="set_password">Set Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="provide_us_with_an_email_we_will_only_use_this_for_password_resetting">Provide us with an email. We will only use this for password resetting.</string>
+    <string name="email">Email</string>
+    <string name="please_fill_in_all_the_blanks">Please fill in all the blanks.</string>
+
+    //for roomie
+    <string-array name="birdOwlArRoomie">
+        <item>Do you prefer more of a night owl or early bird?</item>
+        <item>Early Bird</item>
+        <item>Night Owl</item>
+        <item>In Between</item>
+    </string-array>
+
+    <string-array name="lgbtArRoomie">
+        <item>Do you want your roommate to be part of the LGBTQ+ community?</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string-array name="petsArRoomie">
+        <item>Do you want your roommate having pets?</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string-array name="cleanDirtyArRoomie">
+        <item>Do you prefer a clean or dirty roommate?</item>
+        <item>Clean</item>
+        <item>Dirty</item>
+        <item>In Between</item>
+    </string-array>
+
+    <string-array name="smokesArRoomie">
+        <item>Do you want your roommate to be a smoker?</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string-array name="drinksArRoomie">
+        <item>Do you want your roommate to drink?</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string-array name="introextroArRoomie">
+        <item>Do you want your roommate to be an introvert or extrovert?</item>
+        <item>Extroverted</item>
+        <item>Introverted</item>
+        <item>In Between</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string-array name="genderArRoomie">
+        <item>What gender do you prefer for your roommate?</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+        <item>No Preference</item>
+    </string-array>
+
+    //for profile
+    <string-array name="birdOwlAr">
+        <item>Are you an early bird or night owl?</item>
+        <item>Early Bird</item>
+        <item>Night Owl</item>
+        <item>In Between</item>
+    </string-array>
+
+    <string-array name="lgbtAr">
+        <item>Are you part of the LGBTQ+ community?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="dorms1">
+        <item>Pick a dorm...</item>
+        <item>Aspensen Mogenson</item>
+        <item>Oak Ridge Hall</item>
+        <item>Chancellors Hall</item>
+        <item>Governors Hall</item>
+        <item>Horan Hall</item>
+        <item>Bridgerman Hall</item>
+        <item>Murray Hall</item>
+        <item>Towers North Hall</item>
+        <item>Towers South Hall</item>
+        <item>The Suites</item>
+    </string-array>
+
+    <string-array name="petsAr">
+        <item>Do you have any pets?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="cleanDirtyAr">
+        <item>Do you consider yourself a clean or dirty person?</item>
+        <item>Clean</item>
+        <item>Dirty</item>
+        <item>In Between</item>
+    </string-array>
+
+    <string-array name="smokesAr">
+        <item>Are you a smoker?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="drinksAr">
+        <item>Do you drink?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="introextroAr">
+        <item>Do you consider yourself an introvert or extrovert?</item>
+        <item>Extroverted</item>
+        <item>Introverted</item>
+        <item>In Between</item>
+    </string-array>
+
+    <string-array name="genderAr">
+        <item>What is your gender?</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+    </string-array>
 </resources>

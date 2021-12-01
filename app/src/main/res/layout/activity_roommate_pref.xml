@@ -6,4 +6,131 @@
     android:layout_height="match_parent"
     tools:context=".RoommatePref">
 
+    <Button
+        android:id="@+id/backInR"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/backing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/purple_200" />
+
+    <TextView
+        android:id="@+id/roomText"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/roommate_preferences"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backInR"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backInR" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/roomieDisc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/roommatedisclaimer"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/genderRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/genderArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/lgbtRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/lgbtArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/smokesRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/smokesArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/drinksRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/drinksArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/petsRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/petsArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/cleanRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:entries="@array/cleanDirtyArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/nightRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/birdOwlArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/introextroRoom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/introextroArRoomie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_preferences" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

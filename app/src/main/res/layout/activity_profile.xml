@@ -2,8 +2,279 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cleandirty"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/dots"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@color/teal_700"
+        android:contentDescription="@string/profileimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#887E51B7"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/match"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="?attr/actionModeCopyDrawable"
+            app:strokeColor="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/swipe"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@android:drawable/arrow_down_float"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/profile"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_launcher_foreground"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/disclaimer"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/roomiePref"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/set_roommate_preferences" />
+
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/name_and_pronouns"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@string/name_and_pronouns" />
+
+            <Spinner
+                android:id="@+id/Gender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/genderAr"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+            <Spinner
+                android:id="@+id/lgbtProf"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/lgbtAr"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="15sp"
+                android:contentDescription="@string/divider1"
+                app:srcCompat="@color/teal_700" />
+
+            <TextView
+                android:id="@+id/college"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/university_of_wisconsin_eau_claire"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/degree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/major_minor"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@string/major_minor" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <EditText
+                android:id="@+id/bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:text="@string/biog"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+            <TextView
+                android:id="@+id/dormChoice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:lineSpacingExtra="20sp"
+                android:text="@string/dormCh"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/dorms"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/dorms1"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/dorms2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/dorms1"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/dorms3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/dorms1"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="15sp"
+                android:contentDescription="@string/divider2"
+                app:srcCompat="@color/teal_700" />
+
+            <Spinner
+                android:id="@+id/cleanordirty"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/cleanDirtyAr"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/birdorowl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/birdOwlAr"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/pets"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/petsAr"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/smokes"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/smokesAr"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/drinks"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/drinksAr"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/extrointro"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/introextroAr"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/saveprof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_profile" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--&lt;!&ndash;    <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/imageButton"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        tools:layout_editor_absoluteX="149dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        tools:layout_editor_absoluteY="99dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        tools:srcCompat="@tools:sample/avatars" />&ndash;&gt;-->
 </androidx.constraintlayout.widget.ConstraintLayout>

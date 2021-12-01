@@ -5,6 +5,13 @@
       <map>
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2222222222222222" />
+        <entry key="app/src/main/res/layout/activity_matches.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_roommate_pref.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.27794871794871795" />
       </map>
     </option>
   </component>
