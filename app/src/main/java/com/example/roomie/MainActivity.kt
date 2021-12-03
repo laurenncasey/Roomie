@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     val usrInput= findViewById<TextView>(R.id.usrname)
     val pwdInput = findViewById<TextView>(R.id.pwd)
+    //verify with database here
 
     val signUpB = findViewById<Button>(R.id.signup)
     val logInB = findViewById<Button>(R.id.login)

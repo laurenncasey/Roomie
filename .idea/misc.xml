@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CSMobile/Roomie/app/src/main/res/layout/activity_forgot_password.xml" value="0.25181159420289856" />
+        <entry key="..\:/CSMobile/Roomie/app/src/main/res/layout/activity_main.xml" value="0.25181159420289856" />
+        <entry key="..\:/CSMobile/Roomie/app/src/main/res/layout/activity_profile.xml" value="0.24010416666666667" />
+        <entry key="..\:/CSMobile/Roomie/app/src/main/res/layout/activity_sign_up.xml" value="0.2477355072463768" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_matches.xml" value="0.27794871794871795" />
