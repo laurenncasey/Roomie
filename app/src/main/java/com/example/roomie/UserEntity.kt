@@ -132,5 +132,56 @@ import androidx.room.PrimaryKey
         fun setUserEmail(email: String) {
             this.email = email
         }
+        fun getGend(): Int?{
+            return gender
+        }
+        fun setGend(gender: Int){
+            this.gender = gender
+        }
+        fun getLGBT(): Boolean? {
+            return lgbt
+        }
+        fun setLGBT(lgbt: Boolean){
+            this.lgbt = lgbt
+        }
+        fun getMjr(): String?{
+            return major
+        }
+        fun setMjr(major: String){
+            this.major = major
+        }
+        fun getBiography(): String?{
+            return bio
+        }
+        fun setBiography(bio: String){
+            this.bio = bio
+        }
+        fun getDormOne(): Int?
+        {
+            return dorm1
+        }
+        fun setDormOne(dorm1: Int){
+            this.dorm1 = dorm1
+        }
+        fun getDormTwo(): Int?
+        {
+            return dorm2
+        }
+        fun setDormTwo(dorm2: Int){
+            this.dorm2 = dorm2
+        }
+        fun getDormThree(): Int?
+        {
+            return dorm3
+        }
+        fun setDormThree(dorm3: Int){
+            this.dorm3 = dorm3
+        }
+        fun getIntro(): Int?{
+           return introvert
+        }
+        fun setIntro(introvert: Int){
+            this.introvert = introvert
+        }
     }
 
