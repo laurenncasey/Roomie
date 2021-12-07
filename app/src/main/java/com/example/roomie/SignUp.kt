@@ -21,21 +21,29 @@ import android.os.AsyncTask
  */
 class SignUp : AppCompatActivity() {
 
-    val username = findViewById<TextView>(R.id.setusr1)
-    val setpwd = findViewById<TextView>(R.id.setpwd)
-    val confirmPwd = findViewById<TextView>(R.id.setpwd2)
-    val email = findViewById<TextView>(R.id.inputemail)
-    val signUpButton = findViewById<Button>(R.id.confirmsignUp)
-    val errorSignUp = findViewById<TextView>(R.id.error1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        signUpButton?.setOnClickListener{
+        val username = findViewById<TextView>(R.id.setusr1)
+        val setpwd = findViewById<TextView>(R.id.setpwd)
+        val confirmPwd = findViewById<TextView>(R.id.setpwd2)
+        val email = findViewById<TextView>(R.id.inputemail)
+        val errorSignUp = findViewById<TextView>(R.id.error1)
+
+
+        findViewById<Button>(R.id.signupBack).setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        findViewById<Button>(R.id.confirmsignUp).setOnClickListener{
+
+            //ERROR CHECK NEEDS FIXING
+
+
             if((username != null) and (setpwd != null) and (confirmPwd != null) and (email != null)){
                 signupUser()
-                startActivity(Intent(this, Matches::class.java))
+                startActivity(Intent(this, Profile::class.java))
             }else{
                 errorSignUp.visibility = View.VISIBLE
                 }
@@ -79,8 +87,7 @@ class SignUp : AppCompatActivity() {
 
                 user.setUserName(sUser)
                 user.setPwd(sConfirmPwd)
-                user.setUserEmail(sEmail)
-
+                user.setUserEmail(sEmail
 
                 //adding to database
                 DatabaseClient.getInstance(applicationContext)?.getAppDb()

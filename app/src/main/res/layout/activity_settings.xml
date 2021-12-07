@@ -10,13 +10,13 @@
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="-20dp"
+        android:layout_marginBottom="-10dp"
+        android:background="#B586F3"
         android:contentDescription="@string/backing"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/teal_700"
         tools:ignore="ImageContrastCheck" />
 
     <Button
@@ -25,6 +25,8 @@
         android:layout_height="50dp"
         android:textAlignment="center"
         app:icon="?attr/actionModeCloseDrawable"
+        app:iconSize="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -33,11 +35,16 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:lineSpacingExtra="8sp"
         android:text="@string/set"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="50sp"
         android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back"
         app:layout_constraintTop_toTopOf="parent" />

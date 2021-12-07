@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".RoommatePref">
 
     <Button
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         app:icon="?attr/actionModeCloseDrawable"
+        app:iconSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -19,20 +21,23 @@
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="#B586F3"
         android:contentDescription="@string/backing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/purple_200" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/roomText"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center_horizontal|center_vertical"
         android:text="@string/roommate_preferences"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backInR"
         app:layout_constraintTop_toTopOf="parent" />

@@ -24,19 +24,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        signUpB?.setOnClickListener {
-            startActivity(Intent(this, SignUp::class.java))
+
+        val usrInput= findViewById<TextView>(R.id.usrname)
+        val pwdInput = findViewById<TextView>(R.id.pwd)
+
+       findViewById<Button>(R.id.signup).setOnClickListener{
+           startActivity(Intent(this, SignUp::class.java))
+       }
+        findViewById<Button>(R.id.login).setOnClickListener{
+            startActivity(Intent(this, Profile::class.java))
         }
 
-        forgotPwdB?.setOnClickListener {
-            startActivity(Intent(this, ResetPassword::class.java))
-        }
-
-        logInB?.setOnClickListener {
-            //if cannot find usr name or pwd in database, opt red and try forgot password?
-
-            startActivity(Intent(this, Matches::class.java))
+        findViewById<Button>(R.id.forgotpwd).setOnClickListener{
+            startActivity(Intent(this, ForgotPassword::class.java))
         }
     }
 }
