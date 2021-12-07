@@ -111,4 +111,5 @@ class SignUp : AppCompatActivity() {
         su.execute()
     }
     }
+}
 

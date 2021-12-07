@@ -13,7 +13,7 @@ class Swipe : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe)
-       var swiper = findViewById<ViewPager2>(R.id.swipePager)
+       //var swiper = findViewById<ViewPager2>(R.id.swipePager)
 
     }
 }

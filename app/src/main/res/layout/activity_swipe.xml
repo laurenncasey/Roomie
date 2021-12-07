@@ -6,29 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".Swipe">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/swipePager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/navFrag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
-            android:name="com.example.roomie.ProfileHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navFrag"
-        android:name="com.example.roomie.NavBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
