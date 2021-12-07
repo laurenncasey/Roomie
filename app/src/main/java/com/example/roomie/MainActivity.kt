@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.room.Room
 
 /**
  * Author: Lauren Casey
@@ -13,22 +14,26 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-    val usrInput= findViewById<TextView>(R.id.usrname)
-    val pwdInput = findViewById<TextView>(R.id.pwd)
-    //verify with database here
 
-    val signUpB = findViewById<Button>(R.id.signup)
-    val logInB = findViewById<Button>(R.id.login)
-    val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //verify with database here
+
+        val signUpB = findViewById<Button>(R.id.signup)
+        val logInB = findViewById<Button>(R.id.login)
+        val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
 
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
+        val db = Room.databaseBuilder(
+            applicationContext,
+            RoomieDB::class.java, "database-name"
+        ).build()
+
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            startActivity(Intent(this, SignUp::class.java))
