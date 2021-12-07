@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 
 /**
  * Author: Lauren Casey
@@ -13,18 +14,13 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-    val usrInput= findViewById<TextView>(R.id.usrname)
-    val pwdInput = findViewById<TextView>(R.id.pwd)
-    //verify with database here
-
-    val signUpB = findViewById<Button>(R.id.signup)
-    val logInB = findViewById<Button>(R.id.login)
-    val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val signUpB = findViewById<Button>(R.id.signup)
+        val logInB = findViewById<Button>(R.id.login)
+        val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
 
 
         val usrInput= findViewById<TextView>(R.id.usrname)
