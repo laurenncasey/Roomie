@@ -1,5 +1,6 @@
 package com.example.roomie
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,8 +12,10 @@ import android.widget.TextView
  * Author: Lauren Casey
  */
 class RoommatePref : AppCompatActivity() {
-    val discl = findViewById<TextView>(R.id.roomieDisc)
-    val saveRoomie = findViewById<Button>(R.id.save)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_roommate_pref)
+        val discl = findViewById<TextView>(R.id.roomieDisc)
 
     //roomie preferences to save
     val genderR : Spinner = findViewById(R.id.genderRoom)
@@ -24,13 +27,16 @@ class RoommatePref : AppCompatActivity() {
     val petsR: Spinner = findViewById(R.id.petsRoom)
     val nightR: Spinner = findViewById(R.id.nightRoom)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_roommate_pref)
+
         discl.text = "Tell us your roommate preferences! These will be kept private but used in your matching algorithm to find potential roommates! You do not have to answer every one, but keep in mind, the more you fill out the better matches you will get!"
 
-        saveRoomie?.setOnClickListener{
+        findViewById<Button>(R.id.save).setOnClickListener{
             //save all information to database
+
+        }
+
+        findViewById<Button>(R.id.backInR).setOnClickListener{
+            startActivity(Intent(this, Profile::class.java))
         }
     }
 }

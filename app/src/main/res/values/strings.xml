@@ -168,4 +168,9 @@
         <item>Male</item>
         <item>Other</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_and_age">name and age</string>
+    <string name="collegemajor">collegeMajor</string>
+    <string name="textview">TextView</string>
 </resources>

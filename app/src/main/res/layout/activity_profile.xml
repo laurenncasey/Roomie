@@ -29,52 +29,20 @@
         app:srcCompat="@android:drawable/ic_menu_camera"
         tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#887E51B7"
-        android:orientation="horizontal"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.roomie.NavBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/match"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="24sp"
-            app:icon="?attr/actionModeCopyDrawable"
-            app:strokeColor="#FFFFFF"
-            tools:ignore="SpeakableTextPresentCheck"
-            style="?android:attr/buttonBarButtonStyle" />
-
-        <Button
-            android:id="@+id/swipe"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:icon="@android:drawable/arrow_down_float"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/profile"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:icon="@drawable/ic_launcher_foreground"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -269,12 +237,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!--&lt;!&ndash;    <ImageButton&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/imageButton"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:layout_editor_absoluteX="149dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:layout_editor_absoluteY="99dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:srcCompat="@tools:sample/avatars" />&ndash;&gt;-->
 </androidx.constraintlayout.widget.ConstraintLayout>
