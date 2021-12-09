@@ -110,6 +110,6 @@ class SignUp : AppCompatActivity() {
         val su = SignupUser()
         su.execute()
     }
-    }
 }
+
 
