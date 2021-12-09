@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             RoomieDB::class.java, "database-name"
         ).build()
-
+        val userDao = db.userDao()
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            startActivity(Intent(this, SignUp::class.java))
