@@ -17,17 +17,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/imageInput"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@color/teal_700"
+        android:background="#008C60C6"
         android:contentDescription="@string/profileimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+        app:srcCompat="@drawable/profilepicture" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -46,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton">
+        app:layout_constraintTop_toBottomOf="@+id/imageInput">
 
         <LinearLayout
             android:layout_width="match_parent"

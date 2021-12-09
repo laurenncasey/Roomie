@@ -1,15 +1,15 @@
-package com.example.roomie
-
+//package com.example.roomie
+//
 //import androidx.room.*
-import com.example.roomie.UserEntity
-
+//import com.example.roomie.UserEntity
+//
 //@Dao
-public interface MessageDao {
-
-    /*
-
-     */
-
+//public interface MessageDao {
+//
+//    /*
+//
+//     */
+//
 //    @Query("SELECT * FROM messagingentity")
 //    fun getAll(): List<MessagingEntity>
 //
@@ -21,5 +21,5 @@ public interface MessageDao {
 //
 //    @Update
 //    fun update(message: MessagingEntity)
-
-}
+//
+//}

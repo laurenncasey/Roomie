@@ -1,7 +1,10 @@
 package com.example.roomie
 
 
+import android.R.attr
+import android.app.Activity
 import android.content.Intent
+import android.content.Intent.ACTION_GET_CONTENT
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +13,14 @@ import android.widget.*
 import android.graphics.BitmapFactory
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import java.net.URI
+import android.R.attr.data
+import android.app.Instrumentation
+import android.content.Context
+import android.graphics.drawable.BitmapDrawable
+import android.media.Image
+import android.os.Parcelable
+import com.squareup.picasso.Picasso
 
 
 /**
@@ -17,13 +28,13 @@ import androidx.fragment.app.FragmentManager
  */
 class Profile : AppCompatActivity() {
 
+
     //TO DO:
     //  if user doesn't answer a question, keep default as editable in profile but for the roommate preview,
     //  only show answered questions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
 
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
@@ -40,56 +51,54 @@ class Profile : AppCompatActivity() {
         val dorm1: Spinner = findViewById(R.id.dorms)
         val dorm2: Spinner = findViewById(R.id.dorms2)
         val dorm3: Spinner = findViewById(R.id.dorms3)
-        val imageSelect: ImageButton = findViewById(R.id.imageButton)
-        val GET_FROM_GALLERY = 1;
-
-        //fragment for NavBar
-
-
 
 
         //save prof
-        val saveProfInfo : Button = findViewById(R.id.saveprof)
-        disclaimerText.text = "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
+        val saveProfInfo: Button = findViewById(R.id.saveprof)
+        disclaimerText.text =
+            "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
         /**
          * setRoommate : if the set roommate preferences button is pressed
          * takes the user to the roommate preferences information input activity
          */
-        findViewById<Button>(R.id.roomiePref).setOnClickListener{
+        findViewById<Button>(R.id.roomiePref).setOnClickListener {
             startActivity(Intent(this, RoommatePref::class.java))
         }
 
         /**
          * settings: if "..." button is selected, bring user to settings activity
          */
-        findViewById<Button>(R.id.settings).setOnClickListener{
+        findViewById<Button>(R.id.settings).setOnClickListener {
+
             startActivity(Intent(this, Settings::class.java))
+
         }
 
         /**
          * ImageSelect : brings user to android gallery to choose profile image
          */
+        val PICK_PHOTO = 23;
+        val profilePicker = findViewById<ImageView>(R.id.imageInput)
 
-//        @Override
-//        fun onActivityResult(requestCode:Int, resultCode:Int, data:Intent){
-//            super.onActivityResult(requestCode, resultCode, data)
-//            if(resultCode == GET_FROM_GALLERY && resultCode == RESULT_OK && null != data){
-//                val selectedImage: Uri = data.data!!
-//                val filePathColumn: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
-//                val cursor = contentResolver.query(
-//                    selectedImage,
-//                    filePathColumn, null, null, null
-//                )
-//                cursor!!.moveToFirst()
-//                val columnIndex = cursor!!.getColumnIndex(filePathColumn[0])
-//                val picturePath = cursor!!.getString(columnIndex)
-//                cursor!!.close()
-//                val imageV = findViewById<ImageView>(R.id.imageButton)
-//                imageV.setImageBitmap(BitmapFactory.decodeFile(picturePath))
-//
-//            }
-//        }
 
+        //This needs to be link to database
+        //val uri: Uri =
+        val uri : Uri = Uri.parse("/Users/laurencasey/AndroidStudioProjects/Roomie2/app/src/main/res/drawable")
+
+        profilePicker?.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+            startActivityForResult(intent, PICK_PHOTO)
+            //Picasso.with(applicationContext).load().into(profilePicker)
+
+        }
+        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == PICK_PHOTO && resultCode == RESULT_OK && data != null) {
+                Picasso.with(applicationContext).load(uri).into(profilePicker)
+            }
+        }
         /**
          * saveProfInfo: saves all inputted information to database to keep as users stored information
          */
