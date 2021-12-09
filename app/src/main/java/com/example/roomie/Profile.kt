@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.*
 import android.graphics.BitmapFactory
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 
 /**
@@ -40,6 +42,11 @@ class Profile : AppCompatActivity() {
         val dorm3: Spinner = findViewById(R.id.dorms3)
         val imageSelect: ImageButton = findViewById(R.id.imageButton)
         val GET_FROM_GALLERY = 1;
+
+        //fragment for NavBar
+
+
+
 
         //save prof
         val saveProfInfo : Button = findViewById(R.id.saveprof)
