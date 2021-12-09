@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
         val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
-//        val db = Room.databaseBuilder(
-//            applicationContext,
-//            RoomieDB::class.java, "database-name"
-//        ).build()
-
-
+        val db = Room.databaseBuilder(
+            applicationContext,
+            RoomieDB::class.java, "database-name"
+        ).build()
+        val userDao = db.userDao()
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            startActivity(Intent(this, SignUp::class.java))
