@@ -9,6 +9,7 @@ import android.widget.TextView
 import org.w3c.dom.Text
 import android.widget.Toast
 import android.widget.EditText
+import androidx.room.Room
 
 
 
@@ -82,6 +83,32 @@ class SignUp : AppCompatActivity() {
             setpwd.requestFocus()
             return
         }
+
+        val db = Room.databaseBuilder(applicationContext, RoomieDB::class.java, "database-name").build()
+//        val usrr: UserDao? = db.userDao()
+//        val userEnt = usrr.UserEntity()
+//
+//        userEnt.setUserName(sUser)
+        val usrDao = db.userDao()
+        usrDao?.insert(UserEntity())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         class SignupUser : AsyncTask<Void, Void, Void>() {
             override fun doInBackground(vararg voids: Void): Void? {
 

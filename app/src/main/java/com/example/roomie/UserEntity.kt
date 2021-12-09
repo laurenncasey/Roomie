@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey
         var password: String? = null
 
         @ColumnInfo(name = "profilepic")//before writing to table need to break the profile pic into a byte array
-        val profilepic: ByteArray? = null
+        var profilepic: ByteArray? = null
 
         @ColumnInfo(name = "fullname")
         var fullname: String? = null
@@ -63,19 +63,19 @@ import androidx.room.PrimaryKey
         var dorm3: Int? = null
 
         @ColumnInfo(name = "clean")//clean = 0, non-clean=1, in between = -1
-        val clean: Int? = null
+        var clean: Int? = null
 
         @ColumnInfo(name = "waketime")//morning person = 0, night person=1, in between = -1
-        val waketime: Int? = null
+        var waketime: Int? = null
 
         @ColumnInfo(name = "pets")//has pet = true, no pet = false
-        val pets: Boolean? = null
+        var pets: Boolean? = null
 
         @ColumnInfo(name = "smoking")//smoker = true, non smoker = false
-        val smoking: Boolean? = null
+        var smoking: Boolean? = null
 
         @ColumnInfo(name = "alcohol")//drinker = true, non drinker = false
-        val alcohol: Boolean? = null
+        var alcohol: Boolean? = null
 
         @ColumnInfo(name = "introvert")//introvert = 0, extrovert=1, in between = -1
         var introvert: Int? = null
