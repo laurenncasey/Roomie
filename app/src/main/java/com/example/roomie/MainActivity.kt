@@ -38,5 +38,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.forgotpwd).setOnClickListener{
             startActivity(Intent(this, ForgotPassword::class.java))
         }
+
+        findViewById<Button>(R.id.testMatches).setOnClickListener{
+            startActivity(Intent(this, Matches::class.java))
+        }
     }
 }
