@@ -183,5 +183,36 @@ import androidx.room.PrimaryKey
         fun setIntro(introvert: Int){
             this.introvert = introvert
         }
+        fun getclean(): Int?
+        {
+            return clean
+        }
+        fun setclean(dorm1: Int){
+            this.clean = clean
+        }fun getwakeTime(): Int?
+        {
+            return waketime
+        }
+        fun setwakeTime(dorm1: Int){
+            this.waketime = waketime
+        }
+        fun getpets(): Boolean? {
+            return pets
+        }
+        fun setpets(lgbt: Boolean){
+            this.pets = pets
+        }
+        fun getsmoking(): Boolean? {
+            return smoking
+        }
+        fun setsmoking(lgbt: Boolean){
+            this.smoking = smoking
+        }
+        fun getalcohol(): Boolean? {
+            return alcohol
+        }
+        fun setalcohol(lgbt: Boolean){
+            this.alcohol = alcohol
+        }
     }
 
