@@ -10,10 +10,10 @@ import com.google.firebase.database.FirebaseDatabase
 
 
 class SignUp : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+        val numUsers = countOfUsers()
         val username = findViewById<TextView>(R.id.setusr1)
         val setpwd = findViewById<TextView>(R.id.setpwd)
         val confirmPwd = findViewById<TextView>(R.id.setpwd2)
@@ -22,9 +22,6 @@ class SignUp : AppCompatActivity() {
 
     //generate id
 
-        var numOfUsers = 0
-
-
     findViewById<Button>(R.id.login)?.setOnClickListener{
             startActivity(Intent(this, Profile::class.java))
         }
@@ -32,14 +29,24 @@ class SignUp : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
         findViewById<Button>(R.id.confirmsignUp).setOnClickListener {
-            val newUser = User(numOfUsers)
+            val newUser = User(numUsers.getUserCount())
+            numUsers.increment()
             newUser.setusername(username.text.toString())
-            numOfUsers+=1
             startActivity(Intent(this, Profile::class.java))
 
 
 
         }
+    }
+}
+
+class countOfUsers(){
+    var counter = 0;
+    fun getUserCount():Int{
+        return counter ++
+    }
+    fun increment(){
+        counter++
     }
 }
 
