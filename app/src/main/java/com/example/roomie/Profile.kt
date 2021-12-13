@@ -22,14 +22,18 @@ import android.graphics.drawable.BitmapDrawable
 import android.media.Image
 import android.os.Parcelable
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toFile
 import androidx.room.Room
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
+import java.io.File
 
 
 /**
  * Author: Lauren Casey
  */
-class Profile : AppCompatActivity() {
+class Profile: AppCompatActivity() {
 
 
     //TO DO:
@@ -39,100 +43,128 @@ class Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        val db = FirebaseDatabase.getInstance().reference
+
+
+        /**
+         * Variables used
+         */
+        //NEED THIS TO PASS USER TO OTHER ACTIVITIES
+        val user: User? = intent.getParcelableExtra<User>("passedValue")
+
+
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
-       // profile information to save to database
-        val cleanDirty: Spinner = findViewById(R.id.cleanordirty)
-        val birdOwl: Spinner = findViewById(R.id.birdorowl)
-        val nameSet: TextView = findViewById(R.id.name)
-        val ie: Spinner = findViewById(R.id.extrointro)
-        val pets: Spinner = findViewById(R.id.pets)
-        val drinks: Spinner = findViewById(R.id.drinks)
-        val smokes: Spinner = findViewById(R.id.smokes)
-        val lgbt: Spinner = findViewById(R.id.lgbtProf)
-        val dorm1: Spinner = findViewById(R.id.dorms)
-        val dorm2: Spinner = findViewById(R.id.dorms2)
-        val dorm3: Spinner = findViewById(R.id.dorms3)
+        // profile information to save to database
+        val genderUser = findViewById<Spinner>(R.id.Gender).selectedItem.toString()
+        val cleanDirty = findViewById<Spinner>(R.id.cleanordirty).selectedItem.toString()
+        val birdOwl = findViewById<Spinner>(R.id.birdorowl).selectedItem.toString()
+        val ie = findViewById<Spinner>(R.id.extrointro).selectedItem.toString()
+        val pets = findViewById<Spinner>(R.id.pets).selectedItem.toString()
+        val drinks = findViewById<Spinner>(R.id.drinks).selectedItem.toString()
+        val smokes = findViewById<Spinner>(R.id.smokes).selectedItem.toString()
+        val lgbt = findViewById<Spinner>(R.id.lgbtProf).selectedItem.toString()
+        val dorm1 = findViewById<Spinner>(R.id.dorms).selectedItem.toString()
+        val dorm2 = findViewById<Spinner>(R.id.dorms2).selectedItem.toString()
+        val dorm3 = findViewById<Spinner>(R.id.dorms3).selectedItem.toString()
 
-//
-//       // save prof
-        val saveProfInfo: Button = findViewById(R.id.saveprof)
         disclaimerText.text =
             "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
-//        /**
-//         * Sets profile setting and saves to db if "save" button is pressed
-//         */
-        findViewById<Spinner>(R.id.Gender).onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                //add to db
-
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                //set as null in db
-            }
-
-        }
-
-    //        /**
-    //         * setRoommate : if the set roommate preferences button is pressed
-    //         * takes the user to the roommate preferences information input activity
-    //         */
-                findViewById<Button>(R.id.roomiePref).setOnClickListener {
-            startActivity(Intent(this, RoommatePref::class.java))
-        }
-
-
-                /**
-                 * settings: if "..." button is selected, bring user to settings activity
-                 */
-                findViewById<Button>(R.id.settings).setOnClickListener {
-
-            startActivity(Intent(this, Settings::class.java))
-
-        }
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
-         * ImageSelect : brings user to android gallery to choose profile image
+         * Set profile's set values to it's default show values
          */
-//        val PICK_PHOTO = 23;
-//        val profilePicker = findViewById<ImageView>(R.id.imageInput)
-//
-//
-//        //This needs to be link to database
-//
-//        val uri : Uri = Uri.parse("filename")
-//
-//        profilePicker?.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//
-//            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-//            startActivityForResult(intent, PICK_PHOTO)
-//            //Picasso.with(applicationContext).load().into(profilePicker)
-//
-//        }
-//        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//            super.onActivityResult(requestCode, resultCode, data)
-//            if (requestCode == PICK_PHOTO && resultCode == RESULT_OK && data != null) {
-//                Picasso.with(applicationContext).load(uri).into(profilePicker)
+
+//        findViewById<Spinner>(R.id.Gender).set
+//        fun ifNotNull(item : View, selected: String){
+//            if(item != null){
+//                item.set
 //            }
 //        }
-//        /**
-//         * saveProfInfo: saves all inputted information to database to keep as users stored information
-//         */
 
-//        findViewById<Button>(R.id.saveprof).setOnClickListener{
-//
-//        }
+
+
+
+
+
 
         /**
-         * Navigation Bar: Consists of 3 button functions.
-         * goToProf: brings the user to the profile activity
-         * goToMatches: brings the user to their matches activity
-         * goToSwipe: brings the user to the swipe activity
+         * Sets profile setting and saves to db if "save" button is pressed
          */
+        //sets users full name
+        findViewById<TextView>(R.id.name).setOnClickListener {
+            user?.setusername(findViewById<TextView>(R.id.name).text.toString())
+        }
+
+
+        /**
+         * Pick profile picture from gallery and save to profile and load up initially
+         */
+
+        val profilePicker = findViewById<ImageView>(R.id.imageInput)
+
+        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                profilePicker.setImageURI(result.data?.data)
+                //SAVE PROFILE PIC AS URI IN DATABASE
+                user?.setprofilepic(result.data?.data)
+            }
+        }
+        fun openYourActivity() {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            resultLauncher.launch(intent)
+        }
+
+        profilePicker?.setOnClickListener{
+            openYourActivity()
+        }
+
+        /**
+         * saveProfInfo: saves all inputted information to database to keep as users stored information
+         */
+        findViewById<Button>(R.id.saveprof).setOnClickListener {
+
+            user?.setgender(genderUser)
+            user?.setclean(cleanDirty)
+            user?.setwake(birdOwl)
+            user?.setintrovert(ie)
+            user?.setpets(pets)
+            user?.setalco(drinks)
+            user?.setsmoke(smokes)
+            user?.setlgbt(lgbt)
+            user?.setdormone(dorm1)
+            user?.setdormtwo(dorm2)
+            user?.setdormthree(dorm3)
+            Toast.makeText(applicationContext, "Profile Saved", Toast.LENGTH_SHORT).show()
+
+        }
+
+
+        /**
+         * setRoommate : if the set roommate preferences button is pressed
+         * takes the user to the roommate preferences information input activity
+         */
+        findViewById<Button>(R.id.roomiePref).setOnClickListener {
+            val intent = Intent(this, RoommatePref::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
+        }
+
+
+        /**
+         * settings: if "..." button is selected, bring user to settings activity
+         */
+        findViewById<Button>(R.id.settings).setOnClickListener {
+            //passing user info into settings for deletion and things
+            val intent = Intent(this, Settings::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
+        }
+
+
     }
-
-
 }
