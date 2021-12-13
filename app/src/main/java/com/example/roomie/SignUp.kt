@@ -32,8 +32,14 @@ class SignUp : AppCompatActivity() {
             val newUser = User(numUsers.getUserCount())
             numUsers.increment()
             newUser.setusername(username.text.toString())
-            startActivity(Intent(this, Profile::class.java))
 
+            //HOW TO SEND USER TO OTHER ACTIVITIES
+            val intent = Intent(this, Profile::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", newUser)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
+            //
 
 
         }

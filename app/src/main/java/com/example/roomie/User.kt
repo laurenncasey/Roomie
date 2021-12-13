@@ -1,15 +1,24 @@
 package com.example.roomie
 
-import android.location.GnssNavigationMessage
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.os.Parcel
+import android.os.Parcelable
+import androidx.annotation.DrawableRes
+import androidx.core.graphics.createBitmap
 import com.google.firebase.database.FirebaseDatabase
 
-data class User(val userID : Int){
+/**
+ * Author : Lauren Casey
+ */
+data class User(val userID : Int) : Parcelable{
     //var profilePic : Array<ByteArray> = null
     var gender = ""
     var username = ""
     var password = ""
     var email = ""
-    var profilePic : ByteArray? = null
+    var profilePic :Uri? = Uri.EMPTY
     var dormOne = ""
     var dormTwo = ""
     var dormThree = ""
@@ -26,6 +35,27 @@ data class User(val userID : Int){
 
 
     val db = FirebaseDatabase.getInstance().getReference("/user" + userID)
+
+    constructor(parcel: Parcel) : this(parcel.readInt()) {
+        gender = parcel.readString().toString()
+        username = parcel.readString().toString()
+        password = parcel.readString().toString()
+        //profilePic = writeToParcel(parcel, 0)
+        email = parcel.readString().toString()
+        dormOne = parcel.readString().toString()
+        dormTwo = parcel.readString().toString()
+        dormThree = parcel.readString().toString()
+        major = parcel.readString().toString()
+        bio = parcel.readString().toString()
+        clean = parcel.readString().toString()
+        waketime = parcel.readString().toString()
+        pets = parcel.readString().toString()
+        alcohol = parcel.readString().toString()
+        smoking = parcel.readString().toString()
+        introverted = parcel.readString().toString()
+        fullname = parcel.readString().toString()
+        lgbt = parcel.readString().toString()
+    }
 
 
     /**
@@ -50,13 +80,12 @@ data class User(val userID : Int){
     }
 
     //PROFILE PICTURE
-
-//    fun setprofilepic(setProfPic : ByteArray){
-//
-//    }
-//    fun getprofilepic():ByteArray{
-//        return null
-//    }
+    fun setprofilepic(setProfPic : Uri?){
+        profilePic = setProfPic
+    }
+    fun getprofilepic():Uri? {
+        return profilePic
+    }
 
     //password
     fun setpassword(setPassword : String){
@@ -185,7 +214,7 @@ data class User(val userID : Int){
     }
 
     //introverted
-    fun getintrovert(introvertedOrNot : String){
+    fun setintrovert(introvertedOrNot : String){
         introverted = introvertedOrNot
         db.child("introverted").setValue(introvertedOrNot)
         }
@@ -193,7 +222,43 @@ data class User(val userID : Int){
             return introverted
         }
 
-
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(userID)
+        //parcel.writeByteArray(profilePic)
+        parcel.writeString(gender)
+        parcel.writeString(username)
+        parcel.writeString(password)
+        parcel.writeString(email)
+        parcel.writeString(dormOne)
+        parcel.writeString(dormTwo)
+        parcel.writeString(dormThree)
+        parcel.writeString(major)
+        parcel.writeString(bio)
+        parcel.writeString(clean)
+        parcel.writeString(waketime)
+        parcel.writeString(pets)
+        parcel.writeString(alcohol)
+        parcel.writeString(smoking)
+        parcel.writeString(introverted)
+        parcel.writeString(fullname)
+        parcel.writeString(lgbt)
     }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<User> {
+        override fun createFromParcel(parcel: Parcel): User {
+            return User(parcel)
+        }
+
+        override fun newArray(size: Int): Array<User?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+
+}
 
 
