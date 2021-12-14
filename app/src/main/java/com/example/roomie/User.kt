@@ -29,6 +29,7 @@ data class User(val usrname: String) : Parcelable{
     var lgbt = ""
     var listOfYes : List<String> = emptyList()
     var listOfNo : List<String> = emptyList()
+    var matches : List<String> = emptyList()
 
 
 
@@ -211,6 +212,14 @@ data class User(val usrname: String) : Parcelable{
     }
     fun getsmoke():String{
         return smoking
+    }
+
+    fun addMatches(username: String) {
+        matches.plusElement(username)
+    }
+
+    fun getMatchesList(): List<String> {
+        return matches
     }
 
     //introverted
