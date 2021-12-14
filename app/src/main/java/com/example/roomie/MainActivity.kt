@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.room.Room
 import androidx.fragment.app.Fragment
+import com.google.firebase.FirebaseOptions
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
@@ -32,9 +34,10 @@ class MainActivity : AppCompatActivity() {
            startActivity(Intent(this, SignUp::class.java))
        }
         findViewById<Button>(R.id.login).setOnClickListener{
-
-            //search DB
-            startActivity(Intent(this, Profile::class.java))
+            //FIX
+            if(findInDB().findUser(usrInput.text.toString(), pwdInput.text.toString())!=null) {
+                startActivity(Intent(this, Profile::class.java))
+            }
         }
 
         findViewById<Button>(R.id.forgotpwd).setOnClickListener{

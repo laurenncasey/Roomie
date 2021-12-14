@@ -43,7 +43,6 @@ class Profile: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val db = FirebaseDatabase.getInstance().reference
 
 
         /**
@@ -51,7 +50,6 @@ class Profile: AppCompatActivity() {
          */
         //NEED THIS TO PASS USER TO OTHER ACTIVITIES
         val user: User? = intent.getParcelableExtra<User>("passedValue")
-
 
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 

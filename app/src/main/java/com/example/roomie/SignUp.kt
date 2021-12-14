@@ -6,7 +6,6 @@ import android.os.Bundle
 //import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.google.firebase.database.FirebaseDatabase
 
 
 class SignUp : AppCompatActivity() {
@@ -26,15 +25,20 @@ class SignUp : AppCompatActivity() {
 
 
     findViewById<Button>(R.id.login)?.setOnClickListener{
+        //CHECK NO NULL
             startActivity(Intent(this, Profile::class.java))
         }
         findViewById<Button>(R.id.signupBack).setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
         }
         findViewById<Button>(R.id.confirmsignUp).setOnClickListener {
-            val newUser = User(numOfUsers)
+            //signing up creates a new user
+            val newUser = User(usrname = username.text.toString())
             newUser.setusername(username.text.toString())
             numOfUsers+=1
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", newUser)
+            //Profile needs this user to add other preferences into their profile
             startActivity(Intent(this, Profile::class.java))
 
 

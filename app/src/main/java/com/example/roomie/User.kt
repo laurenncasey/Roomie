@@ -1,22 +1,17 @@
 package com.example.roomie
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.annotation.DrawableRes
-import androidx.core.graphics.createBitmap
 import com.google.firebase.database.FirebaseDatabase
 
 /**
  * Author : Lauren Casey
  */
-data class User(val userID : Int) : Parcelable{
-    //var profilePic : Array<ByteArray> = null
+data class User(val usrname: String) : Parcelable{
     var gender = ""
-    var username = ""
     var password = ""
+    var username = usrname
     var email = ""
     var profilePic :Uri? = Uri.EMPTY
     var dormOne = ""
@@ -32,11 +27,14 @@ data class User(val userID : Int) : Parcelable{
     var introverted = ""
     var fullname = ""
     var lgbt = ""
+    var listOfYes : List<String> = emptyList()
+    var listOfNo : List<String> = emptyList()
 
 
-    val db = FirebaseDatabase.getInstance().getReference("/user" + userID)
 
-    constructor(parcel: Parcel) : this(parcel.readInt()) {
+    val db = FirebaseDatabase.getInstance().getReference("/" + usrname)
+
+    constructor(parcel: Parcel) : this(parcel.readString().toString()) {
         gender = parcel.readString().toString()
         username = parcel.readString().toString()
         password = parcel.readString().toString()
@@ -224,8 +222,33 @@ data class User(val userID : Int) : Parcelable{
             return introverted
         }
 
+
+    //search through matches
+    fun foundInYes(username: String):Boolean{
+        var found = false;
+        if(listOfYes.contains(username)){
+            found = true
+        }
+        return found
+    }
+    fun foundInNo(username: String):Boolean{
+        var found = false;
+        if(listOfNo.contains(username)){
+            found = true
+        }
+        return found
+    }
+
+    //add to those lists
+    fun addToYes(username: String){
+        listOfYes.plusElement(username)
+    }
+    fun addToNo(username: String){
+        listOfNo.plusElement(username)
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(userID)
+        parcel.writeString(usrname)
         parcel.writeString(gender)
         parcel.writeString(username)
         parcel.writeString(password)

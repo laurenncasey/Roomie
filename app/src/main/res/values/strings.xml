@@ -174,4 +174,6 @@
     <string name="collegemajor">collegeMajor</string>
     <string name="textview">TextView</string>
     <string name="setusrname">setUsrName</string>
+    <string name="nocheck">noCheck</string>
+    <string name="yescheck">yesCheck</string>
 </resources>
