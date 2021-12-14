@@ -17,9 +17,13 @@
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.27794871794871795" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.27794871794871795" />
         <entry key="app/src/main/res/layout/activity_swipe.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_view_pager.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_nav_bar.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_profile_handler_two.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_profile_holder.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_profile_holder_two.xml" value="0.18703703703703703" />
         <entry key="app/src/main/res/layout/swipe_profile_holder_fragment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/things_to_hold.xml" value="0.1" />
       </map>
     </option>
   </component>
