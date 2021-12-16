@@ -39,6 +39,7 @@ class RoommatePref (): AppCompatActivity() {
 
         findViewById<Button>(R.id.save).setOnClickListener{
 
+
         }
 
         findViewById<Button>(R.id.backInR).setOnClickListener{

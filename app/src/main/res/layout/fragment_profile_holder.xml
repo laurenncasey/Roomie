@@ -1,59 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    tools:context=".ProfileHolder">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profilepicture" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/profileimage"
-            android:src="@drawable/profilepicture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        tools:ignore="SpeakableTextPresentCheck">
 
-        <TextView
-            android:id="@+id/nameAge"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/name_and_age"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <TextView
-            android:id="@+id/collegeMajor"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/collegemajor"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameAge" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="com.example.roomie.NavBar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cake"
+                    app:srcCompat="@drawable/cake" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/person"
+                    app:srcCompat="@drawable/person" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/rainbow"
+                    app:srcCompat="@drawable/lgbt" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/biog"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/smoke"
+                    app:srcCompat="@drawable/smokesfixed" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/drink"
+                    app:srcCompat="@drawable/alco" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/paw"
+                    app:srcCompat="@drawable/pets" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/clean"
+                    app:srcCompat="@drawable/clean" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dormCh"
+                    app:srcCompat="@drawable/dorm" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dormCh"
+                    app:srcCompat="@drawable/dorm" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dormCh"
+                    app:srcCompat="@drawable/dorm" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textview"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

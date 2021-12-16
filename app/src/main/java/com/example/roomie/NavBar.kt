@@ -21,7 +21,7 @@ open class NavBar : Fragment(){
         val matchBut = view.findViewById<Button>(R.id.findMatch)
 
         mesBut?.setOnClickListener{
-            startActivity(Intent(activity, Message::class.java))
+            startActivity(Intent(activity, Matches::class.java))
         }
         profBut?.setOnClickListener{
             startActivity(Intent(activity, Profile::class.java))

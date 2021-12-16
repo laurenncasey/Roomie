@@ -27,6 +27,7 @@ data class User(val usrname: String) : Parcelable{
     var introverted = ""
     var fullname = ""
     var lgbt = ""
+    var matches : List<String> = emptyList()
     var listOfYes : List<String> = emptyList()
     var listOfNo : List<String> = emptyList()
 
@@ -246,6 +247,9 @@ data class User(val usrname: String) : Parcelable{
     fun addToNo(username: String){
         listOfNo.plusElement(username)
     }
+
+    //list of matches
+
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(usrname)
