@@ -1,7 +1,6 @@
 package com.example.roomie
 
 //import androidx.room.*
-import com.example.roomie.UserEntity
 
 //@Dao
 public interface MessageDao {
