@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
 
     implementation platform('com.google.firebase:firebase-bom:29.0.1')
+    implementation 'com.google.firebase:firebase-common-ktx:19.5.0'
     //implementation 'com.google.android.gms:play-services-ads-lite:20.5.0'
     //implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
     def support_version = "27.0.2"

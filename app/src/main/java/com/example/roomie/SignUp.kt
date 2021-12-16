@@ -33,15 +33,20 @@ class SignUp : AppCompatActivity() {
         }
         findViewById<Button>(R.id.confirmsignUp).setOnClickListener {
             //signing up creates a new user
-            val newUser = User(usrname = username.text.toString())
-            newUser.setusername(username.text.toString())
-            numOfUsers+=1
-            val bundle = Bundle()
-            bundle.putParcelable("passedValue", newUser)
-            //Profile needs this user to add other preferences into their profile
-            startActivity(Intent(this, Profile::class.java))
+            if(setpwd.text.toString() == confirmPwd.text.toString()) {//verify confirm and set pw are the same
+                val newUser = User(usrname = username.text.toString())
+                newUser.setusername(username.text.toString())
+                newUser.setpassword(confirmPwd.text.toString())
+                newUser.setemail(email.text.toString())
+
+                numOfUsers += 1
+                val bundle = Bundle()
+                bundle.putParcelable("passedValue", newUser)
+                //Profile needs this user to add other preferences into their profile
+                startActivity(Intent(this, Profile::class.java))
 
 
+            }
 
         }
     }
