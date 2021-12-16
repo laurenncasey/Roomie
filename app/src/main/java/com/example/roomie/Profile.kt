@@ -3,9 +3,11 @@ package com.example.roomie
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 
@@ -35,17 +37,18 @@ class Profile: AppCompatActivity() {
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
         // profile information to save to database
-        val genderUser = findViewById<Spinner>(R.id.Gender).selectedItem.toString()
-        val cleanDirty = findViewById<Spinner>(R.id.cleanordirty).selectedItem.toString()
-        val birdOwl = findViewById<Spinner>(R.id.birdorowl).selectedItem.toString()
-        val ie = findViewById<Spinner>(R.id.extrointro).selectedItem.toString()
-        val pets = findViewById<Spinner>(R.id.pets).selectedItem.toString()
-        val drinks = findViewById<Spinner>(R.id.drinks).selectedItem.toString()
-        val smokes = findViewById<Spinner>(R.id.smokes).selectedItem.toString()
-        val lgbt = findViewById<Spinner>(R.id.lgbtProf).selectedItem.toString()
-        val dorm1 = findViewById<Spinner>(R.id.dorms).selectedItem.toString()
-        val dorm2 = findViewById<Spinner>(R.id.dorms2).selectedItem.toString()
-        val dorm3 = findViewById<Spinner>(R.id.dorms3).selectedItem.toString()
+        val genderUser = findViewById<Spinner>(R.id.Gender)
+        val profPic = findViewById<ImageView>(R.id.imageInput)
+        val cleanDirty = findViewById<Spinner>(R.id.cleanordirty)
+        val birdOwl = findViewById<Spinner>(R.id.birdorowl)
+        val ie = findViewById<Spinner>(R.id.extrointro)
+        val pets = findViewById<Spinner>(R.id.pets)
+        val drinks = findViewById<Spinner>(R.id.drinks)
+        val smokes = findViewById<Spinner>(R.id.smokes)
+        val lgbt = findViewById<Spinner>(R.id.lgbtProf)
+        val dorm1 = findViewById<Spinner>(R.id.dorms)
+        val dorm2 = findViewById<Spinner>(R.id.dorms2)
+        val dorm3 = findViewById<Spinner>(R.id.dorms3)
 
         disclaimerText.text =
             "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
@@ -53,13 +56,6 @@ class Profile: AppCompatActivity() {
         /**
          * Set profile's set values to it's default show values
          */
-
-//        findViewById<Spinner>(R.id.Gender).set
-//        fun ifNotNull(item : View, selected: String){
-//            if(item != null){
-//                item.set
-//            }
-//        }
 
 
 
@@ -103,17 +99,20 @@ class Profile: AppCompatActivity() {
          */
         findViewById<Button>(R.id.saveprof).setOnClickListener {
 
-            user?.setgender(genderUser)
-            user?.setclean(cleanDirty)
-            user?.setwake(birdOwl)
-            user?.setintrovert(ie)
-            user?.setpets(pets)
-            user?.setalco(drinks)
-            user?.setsmoke(smokes)
-            user?.setlgbt(lgbt)
-            user?.setdormone(dorm1)
-            user?.setdormtwo(dorm2)
-            user?.setdormthree(dorm3)
+            user?.setgender(genderUser.selectedItem.toString())
+
+            //picture working???
+            user?.setprofilepic((Uri.parse(profPic.toString())))
+            user?.setclean(cleanDirty.selectedItem.toString())
+            user?.setwake(birdOwl.selectedItem.toString())
+            user?.setintrovert(ie.selectedItem.toString())
+            user?.setpets(pets.selectedItem.toString())
+            user?.setalco(drinks.selectedItem.toString())
+            user?.setsmoke(smokes.selectedItem.toString())
+            user?.setlgbt(lgbt.selectedItem.toString())
+            user?.setdormone(dorm1.selectedItem.toString())
+            user?.setdormtwo(dorm2.selectedItem.toString())
+            user?.setdormthree(dorm3.selectedItem.toString())
             Toast.makeText(applicationContext, "Profile Saved", Toast.LENGTH_SHORT).show()
 
         }
