@@ -7,10 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.room.Room
 import androidx.fragment.app.Fragment
-import com.google.firebase.FirebaseOptions
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+//import com.google.firebase.FirebaseOptions
+//import com.google.firebase.auth.FirebaseAuthException
+//import com.google.firebase.database.FirebaseDatabase
+//import com.google.firebase.ktx.Firebase
 
 /**
  * Author: Lauren Casey

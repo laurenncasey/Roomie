@@ -7,7 +7,17 @@
     android:layout_gravity="fill">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navBarFrag"
+        android:id="@+id/profileHandlerFrag"
+        android:name="com.example.roomie.ProfileHolder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView5"
         android:name="com.example.roomie.NavBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,28 +25,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/profileHolderFrag"
-        android:name="com.example.roomie.ProfileHolder"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navBarFrag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="4dp"
         android:clickable="true"
         android:contentDescription="@string/nocheck"
         android:focusable="true"
         android:tint="#FF0000"
         app:backgroundTint="#FF0000"
-        app:layout_constraintBottom_toTopOf="@+id/navBarFrag"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView5"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="#FF0000"
         app:srcCompat="@android:drawable/ic_delete"
@@ -47,14 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:backgroundTint="#38D840"
         android:clickable="true"
         android:contentDescription="@string/yescheck"
         android:focusable="true"
         android:foregroundTint="#00FFFFFF"
         android:tint="#00000000"
-        app:layout_constraintBottom_toTopOf="@+id/navBarFrag"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#689F38"
         app:srcCompat="@drawable/checkblack"

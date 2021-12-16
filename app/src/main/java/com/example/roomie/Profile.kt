@@ -49,7 +49,7 @@ class Profile: AppCompatActivity() {
          * Variables used
          */
         //NEED THIS TO PASS USER TO OTHER ACTIVITIES
-        val user: User? = intent.getParcelableExtra<User>("passedValue")
+        val user: User? = intent.getParcelableExtra("passedValue")
 
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
