@@ -1,33 +1,14 @@
 package com.example.roomie
 
 
-import android.R.attr
 import android.app.Activity
 import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.*
-import android.graphics.BitmapFactory
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import java.net.URI
-import android.R.attr.data
-import android.R.attr.name
-import android.app.Instrumentation
-import android.content.Context
-import android.graphics.drawable.BitmapDrawable
-import android.media.Image
-import android.os.Parcelable
-import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
-import androidx.room.Room
-import com.google.firebase.database.FirebaseDatabase
-import com.squareup.picasso.Picasso
-import java.io.File
+
 
 
 /**

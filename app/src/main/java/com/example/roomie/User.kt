@@ -3,12 +3,11 @@ package com.example.roomie
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
-import com.google.firebase.database.FirebaseDatabase
 
 /**
  * Author : Lauren Casey
  */
-data class User(val usrname: String) : Parcelable{
+data class User(val usrname: String?) : Parcelable{
     var gender = ""
     var password = ""
     var username = usrname
@@ -31,16 +30,12 @@ data class User(val usrname: String) : Parcelable{
     var listOfYes : List<String> = emptyList()
     var listOfNo : List<String> = emptyList()
 
-
-
-    val db = FirebaseDatabase.getInstance().getReference("/" + usrname)
-
-    constructor(parcel: Parcel) : this(parcel.readString().toString()) {
+    constructor(parcel: Parcel) : this(parcel.readString()) {
         gender = parcel.readString().toString()
-        username = parcel.readString().toString()
         password = parcel.readString().toString()
-        //profilePic = writeToParcel(parcel, 0)
+        username = parcel.readString()
         email = parcel.readString().toString()
+        profilePic = parcel.readParcelable(Uri::class.java.classLoader)
         dormOne = parcel.readString().toString()
         dormTwo = parcel.readString().toString()
         dormThree = parcel.readString().toString()
@@ -54,8 +49,10 @@ data class User(val usrname: String) : Parcelable{
         introverted = parcel.readString().toString()
         fullname = parcel.readString().toString()
         lgbt = parcel.readString().toString()
+        matches = parcel.createStringArrayList()!!
+        listOfYes = parcel.createStringArrayList()!!
+        listOfNo = parcel.createStringArrayList()!!
     }
-
 
     /**
      * The following are getters and setters for the users profile
@@ -63,7 +60,6 @@ data class User(val usrname: String) : Parcelable{
     //fullname
     fun setfullname(FullName : String){
         fullname = FullName
-        db.child("fullname").setValue(FullName)
     }
     fun getfullname():String{
         return fullname
@@ -72,16 +68,14 @@ data class User(val usrname: String) : Parcelable{
     //username
     fun setusername(setUsername : String){
         username = setUsername
-        db.child("username").setValue(setUsername)
     }
-    fun getusername():String{
+    fun getusername():String?{
         return username
     }
 
     //PROFILE PICTURE
     fun setprofilepic(setProfPic : Uri?){
         profilePic = setProfPic
-        db.child("profilepicture").setValue(setProfPic)
 
     }
     fun getprofilepic():Uri? {
@@ -91,7 +85,6 @@ data class User(val usrname: String) : Parcelable{
     //password
     fun setpassword(setPassword : String){
         password = setPassword
-        db.child("password").setValue(setPassword)
 
     }
     fun getpassword():String{
@@ -101,7 +94,6 @@ data class User(val usrname: String) : Parcelable{
     //email
     fun setemail(setEmail : String){
         email = setEmail
-        db.child("email").setValue(setEmail)
 
     }
     fun getemail():String{
@@ -111,7 +103,6 @@ data class User(val usrname: String) : Parcelable{
     //gender
     fun setgender(Gndr : String){
         gender = Gndr
-        db.child("gender").setValue(Gndr)
 
     }
     fun getgender():String{
@@ -121,7 +112,6 @@ data class User(val usrname: String) : Parcelable{
     //LGBT
     fun setlgbt(LGBT:String){
         lgbt = LGBT
-        db.child("lgbt").setValue(LGBT)
 
     }
     fun getlgbt():String{
@@ -131,21 +121,18 @@ data class User(val usrname: String) : Parcelable{
     //dorms
     fun setdormone(dorm:String){
         dormOne = dorm
-        db.child("dormOne").setValue(dorm)
     }
     fun getdormone():String{
         return dormOne
     }
     fun setdormtwo(dorm:String){
         dormTwo = dorm
-        db.child("dormTwo").setValue(dorm)
     }
     fun getdormtwo():String{
         return dormTwo
     }
     fun setdormthree(dorm:String){
         dormThree = dorm
-        db.child("dormThree").setValue(dorm)
     }
     fun getdormthree():String{
         return dormThree
@@ -154,7 +141,6 @@ data class User(val usrname: String) : Parcelable{
     //major
     fun setmajor(majorinput:String){
         major = majorinput
-        db.child("major").setValue(majorinput)
     }
     fun getmajor():String{
         return major
@@ -163,7 +149,6 @@ data class User(val usrname: String) : Parcelable{
     //bio
     fun setbio(biography:String){
         bio = biography
-        db.child("bio").setValue(biography)
     }
     fun getbio():String{
         return bio
@@ -172,7 +157,6 @@ data class User(val usrname: String) : Parcelable{
     //clean or dirty
     fun setclean(cleanType :String){
         clean = cleanType
-        db.child("clean").setValue(cleanType)
     }
     fun getclean():String{
         return clean
@@ -181,7 +165,6 @@ data class User(val usrname: String) : Parcelable{
     //waketime
     fun setwake(wakey :String){
         waketime = wakey
-        db.child("waketime").setValue(wakey)
     }
     fun getwake():String{
         return waketime
@@ -190,7 +173,6 @@ data class User(val usrname: String) : Parcelable{
     //pets
     fun setpets(hasPets :String){
             pets = hasPets
-            db.child("pets").setValue(hasPets)
         }
         fun getpets():String{
             return pets
@@ -199,16 +181,14 @@ data class User(val usrname: String) : Parcelable{
     //alcohol
     fun setalco(drinks :String){
         alcohol = drinks
-        db.child("drinks").setValue(drinks)
     }
     fun getalco():String{
         return alcohol
     }
 
     //smokes
-    fun setsmoke(doesSmokes :String){
+    fun setsmoke(doesSmokes :String) {
         smoking = doesSmokes
-        db.child("smokes").setValue(doesSmokes)
     }
     fun getsmoke():String{
         return smoking
@@ -217,9 +197,8 @@ data class User(val usrname: String) : Parcelable{
     //introverted
     fun setintrovert(introvertedOrNot : String){
         introverted = introvertedOrNot
-        db.child("introverted").setValue(introvertedOrNot)
         }
-        fun getintrovert():String{
+    fun getintrovert():String{
             return introverted
         }
 
@@ -248,32 +227,36 @@ data class User(val usrname: String) : Parcelable{
         listOfNo.plusElement(username)
     }
 
-    //list of matches
 
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(usrname)
-        parcel.writeString(gender)
-        parcel.writeString(username)
-        parcel.writeString(password)
-        parcel.writeString(email)
-        parcel.writeString(dormOne)
-        parcel.writeString(dormTwo)
-        parcel.writeString(dormThree)
-        parcel.writeString(major)
-        parcel.writeString(bio)
-        parcel.writeString(clean)
-        parcel.writeString(waketime)
-        parcel.writeString(pets)
-        parcel.writeString(alcohol)
-        parcel.writeString(smoking)
-        parcel.writeString(introverted)
-        parcel.writeString(fullname)
-        parcel.writeString(lgbt)
-    }
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun writeToParcel(p0: Parcel?, p1: Int) {
+        p0?.writeString(usrname)
+        p0?.writeString(gender)
+        p0?.writeString(password)
+        p0?.writeString(username)
+        p0?.writeString(email)
+        p0?.writeParcelable(profilePic, p1)
+        p0?.writeString(dormOne)
+        p0?.writeString(dormTwo)
+        p0?.writeString(dormThree)
+        p0?.writeString(major)
+        p0?.writeString(bio)
+        p0?.writeString(clean)
+        p0?.writeString(waketime)
+        p0?.writeString(pets)
+        p0?.writeString(alcohol)
+        p0?.writeString(smoking)
+        p0?.writeString(introverted)
+        p0?.writeString(fullname)
+        p0?.writeString(lgbt)
+        p0?.writeStringList(matches)
+        p0?.writeStringList(listOfYes)
+        p0?.writeStringList(listOfNo)
     }
 
     companion object CREATOR : Parcelable.Creator<User> {

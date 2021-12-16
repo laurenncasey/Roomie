@@ -4,16 +4,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextClock
-import android.widget.TextView
-import androidx.fragment.app.FragmentContainerView
-//import com.example.roomie.ProfileHolder.OnHeadlineSelectedListener
-
-import android.app.Activity
 
 
 

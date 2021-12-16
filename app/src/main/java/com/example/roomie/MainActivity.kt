@@ -35,9 +35,7 @@ class MainActivity : AppCompatActivity() {
        }
         findViewById<Button>(R.id.login).setOnClickListener{
             //FIX
-            if(findInDB().findUser(usrInput.text.toString(), pwdInput.text.toString())!=null) {
                 startActivity(Intent(this, Profile::class.java))
-            }
         }
 
         findViewById<Button>(R.id.forgotpwd).setOnClickListener{

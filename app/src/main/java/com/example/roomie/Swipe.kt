@@ -1,23 +1,9 @@
 package com.example.roomie
 
 
-import android.content.Intent
-import android.graphics.Insets.add
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.fragment.app.*
-import androidx.lifecycle.LifecycleObserver
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-
 
 /**
  * Author: Lauren Casey
@@ -38,11 +24,17 @@ import com.google.firebase.database.ValueEventListener
 
         val frag = ProfileHolder()
         val initFrag = supportFragmentManager.beginTransaction()
-        val listOfPeople = findInDB().getAllUsers()
+
+
+        val listOfPeople = emptyList<String>()
+
+
+
         var counter = 0
 
         while(counter<listOfPeople.size) {
-            val i = findInDB().getUser(listOfPeople[counter]).orderByValue()
+            //i is find that user in DB
+            val i = null
             initFrag.add(R.id.profileHandlerFrag, frag)
             initFrag.commit()
 
