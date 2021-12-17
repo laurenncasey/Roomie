@@ -3,6 +3,7 @@ package com.example.roomie
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.TextView
 import androidx.room.Room
@@ -29,12 +30,20 @@ class MainActivity : AppCompatActivity() {
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
 
+        val DB = Database(0)
 
        findViewById<Button>(R.id.signup).setOnClickListener{
-           startActivity(Intent(this, SignUp::class.java))
+           //HAVE TO PASS USER
+           val intent = Intent(this, SignUp::class.java)
+           val bundle = Bundle()
+           val user = User(usrInput.text.toString())
+           bundle.putParcelable("passedValue", user)
+           bundle.putParcelable("db", DB)
+           intent.putExtra("passed", bundle)
+           startActivity(intent)
        }
         findViewById<Button>(R.id.login).setOnClickListener{
-            //FIX
+
                 startActivity(Intent(this, Profile::class.java))
         }
 

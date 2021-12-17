@@ -18,10 +18,6 @@ import androidx.activity.result.contract.ActivityResultContracts
  */
 class Profile: AppCompatActivity() {
 
-
-    //TO DO:
-    //  if user doesn't answer a question, keep default as editable in profile but for the roommate preview,
-    //  only show answered questions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -38,7 +34,6 @@ class Profile: AppCompatActivity() {
 
         // profile information to save to database
         val genderUser = findViewById<Spinner>(R.id.Gender)
-        val profPic = findViewById<ImageView>(R.id.imageInput)
         val cleanDirty = findViewById<Spinner>(R.id.cleanordirty)
         val birdOwl = findViewById<Spinner>(R.id.birdorowl)
         val ie = findViewById<Spinner>(R.id.extrointro)
@@ -76,12 +71,11 @@ class Profile: AppCompatActivity() {
          * Pick profile picture from gallery and save to profile and load up initially
          */
 
-        val profilePicker = findViewById<ImageView>(R.id.imageInput)
+        var profilePicker = findViewById<ImageView>(R.id.imageInput)
 
         var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 profilePicker.setImageURI(result.data?.data)
-                //SAVE PROFILE PIC AS URI IN DATABASE
                 user?.setprofilepic(result.data?.data)
             }
         }
@@ -102,7 +96,7 @@ class Profile: AppCompatActivity() {
             user?.setgender(genderUser.selectedItem.toString())
 
             //picture working???
-            user?.setprofilepic((Uri.parse(profPic.toString())))
+            user?.setprofilepic((Uri.parse(profilePicker.toString())))
             user?.setclean(cleanDirty.selectedItem.toString())
             user?.setwake(birdOwl.selectedItem.toString())
             user?.setintrovert(ie.selectedItem.toString())

@@ -34,19 +34,38 @@ class RoommatePref (): AppCompatActivity() {
 
         discl.text = "Tell us your roommate preferences! These will be kept private but used in your matching algorithm to find potential roommates! You do not have to answer every one, but keep in mind, the more you fill out the better matches you will get!"
 
+        /**
+         * DEFAULT SHOW??
+         */
+
+
+
+
+
+
+
+
 
         /**
          * set Roommate preferences
          */
-
         findViewById<Button>(R.id.save).setOnClickListener{
-
-
-
+            user?.setRGender(genderR.selectedItem.toString())
+            user?.setRLgbt(lgbtR.selectedItem.toString())
+            user?.setRSmokes(smokesR.selectedItem.toString())
+            user?.setRDrinks(drinksR.selectedItem.toString())
+            user?.setRClean(cleanR.selectedItem.toString())
+            user?.setRIE(ieR.selectedItem.toString())
+            user?.setRPets(petsR.selectedItem.toString())
+            user?.setRWaketime(nightR.selectedItem.toString())
         }
 
         findViewById<Button>(R.id.backInR).setOnClickListener{
-            startActivity(Intent(this, Profile::class.java))
+            val intent = Intent(this, Profile::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
         }
     }
 }

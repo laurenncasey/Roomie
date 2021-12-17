@@ -1,6 +1,7 @@
 package com.example.roomie
 
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -20,21 +21,20 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
         //grab user passed
         val user: User? = intent.getParcelableExtra("passedValue")
-
+        user as User
+        val tempDB :Database?= intent.getParcelableExtra("db")
+        tempDB as Database
 
         val frag = ProfileHolder()
         val initFrag = supportFragmentManager.beginTransaction()
-
-
-        val listOfPeople = emptyList<String>()
-
-
-
         var counter = 0
 
-        while(counter<listOfPeople.size) {
+        while(counter<tempDB.allUsers.size) {
             //i is find that user in DB
-            val i = null
+            val i = tempDB.getUser(tempDB.allUsers[counter])
+            //set frag data as this user
+            i as User
+            frag.setValues(i.getprofilepic() as Uri, i.getusername().toString(), i.getage(), i.getgender(), i.getlgbt(), i.getbio(), i.getsmoke(), i.getalco(), i.getpets(), i.getclean(), i.getdormone(), i.getdormtwo(), i.getdormthree())
             initFrag.add(R.id.profileHandlerFrag, frag)
             initFrag.commit()
 
@@ -42,19 +42,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
             accept?.setOnClickListener {
                 //add person to yes's and move on
 
-                user?.addToYes(i.toString())
+                user.addToYes(i.toString())
                 counter += 1
 
             }
             decline?.setOnClickListener {
                 //add person to no's and move on
-                user?.addToNo(i.toString())
+                user.addToNo(i.toString())
                 counter += 1
             }
         }
-
-         //Toast.makeText(applicationContext, "Username set.", Toast.LENGTH_SHORT).show()
-   }
+    }
 
 }
 

@@ -22,6 +22,7 @@ data class User(val usrname: String?) : Parcelable{
     var waketime = ""
     var pets = ""
     var alcohol = ""
+    var age = ""
     var smoking = ""
     var introverted = ""
     var fullname = ""
@@ -40,6 +41,7 @@ data class User(val usrname: String?) : Parcelable{
 
     constructor(parcel: Parcel) : this(parcel.readString()) {
         gender = parcel.readString().toString()
+        age = parcel.readString().toString()
         password = parcel.readString().toString()
         username = parcel.readString().toString()
         email = parcel.readString().toString()
@@ -80,6 +82,16 @@ data class User(val usrname: String?) : Parcelable{
     fun getfullname():String{
         return fullname
     }
+
+    //age
+    fun setage(userAge: String){
+        age = userAge
+    }
+
+    fun getage():String{
+        return age
+    }
+
 
     //username
     fun setusername(setUsername : String){

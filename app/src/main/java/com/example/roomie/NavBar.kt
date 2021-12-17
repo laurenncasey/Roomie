@@ -20,14 +20,35 @@ open class NavBar : Fragment(){
         val profBut = view.findViewById<Button>(R.id.profileNav)
         val matchBut = view.findViewById<Button>(R.id.findMatch)
 
+
+
+
+        val user: User? = activity?.intent?.getParcelableExtra("passedValue")
+
+
+
+
+
         mesBut?.setOnClickListener{
-            startActivity(Intent(activity, Matches::class.java))
+            val intent = Intent(activity, Matches::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
         }
         profBut?.setOnClickListener{
-            startActivity(Intent(activity, Profile::class.java))
+            val intent = Intent(activity, Profile::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
         }
         matchBut?.setOnClickListener{
-            startActivity(Intent(activity, Swipe::class.java))
+            val intent = Intent(activity, Swipe::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", user)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
         }
 
         return view
