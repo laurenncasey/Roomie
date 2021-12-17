@@ -29,11 +29,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
         val initFrag = supportFragmentManager.beginTransaction()
         var counter = 0
 
-        while(counter<tempDB.allUsers.size) {
+        val listOfMatches = tempDB.getMatchesList(user)
+        while(counter< listOfMatches.size) {
             //i is find that user in DB
-            val i = tempDB.getUser(tempDB.allUsers[counter])
+            val i = listOfMatches[counter]
             //set frag data as this user
-            i as User
             frag.setValues(i.getprofilepic() as Uri, i.getusername().toString(), i.getage(), i.getgender(), i.getlgbt(), i.getbio(), i.getsmoke(), i.getalco(), i.getpets(), i.getclean(), i.getdormone(), i.getdormtwo(), i.getdormthree())
             initFrag.add(R.id.profileHandlerFrag, frag)
             initFrag.commit()
@@ -42,13 +42,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
             accept?.setOnClickListener {
                 //add person to yes's and move on
 
-                user.addToYes(i.toString())
+                user.addToYes(listOfMatches[counter])
                 counter += 1
 
             }
             decline?.setOnClickListener {
                 //add person to no's and move on
-                user.addToNo(i.toString())
+                user.addToNo(listOfMatches[counter])
                 counter += 1
             }
         }

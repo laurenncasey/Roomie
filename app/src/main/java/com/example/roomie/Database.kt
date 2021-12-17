@@ -11,6 +11,45 @@ data class Database(val pointlessVariable: Int):Parcelable{
     }
 
 
+    fun getMatchesList(user:User):List<User>{
+        var count = 0
+        var listOfMatches = emptyList<User>()
+        while(count < allUsers.size){
+            while(user.foundInNo(allUsers[count]) && user.foundInYes(allUsers[count]) && allUsers[count] != user) {
+                var tally = 0
+                if (allUsers[count].getclean() == user.getRClean()) {
+                    tally += 1
+                }
+                if (allUsers[count].getgender() == user.getRGender()) {
+                    tally += 1
+                }
+                if (allUsers[count].getlgbt() == user.getRLgbt()) {
+                    tally += 1
+                }
+                if (allUsers[count].getsmoke() == user.getRSmokes()) {
+                    tally += 1
+                }
+                if (allUsers[count].getalco() == user.getRDrinks()) {
+                    tally += 1
+                }
+                if (allUsers[count].getpets() == user.getRPets()) {
+                    tally += 1
+                }
+                if (allUsers[count].getwake() == user.getRWaketime()) {
+                    tally += 1
+                }
+                if (allUsers[count].getintrovert() == user.getRIE()) {
+                    tally += 1
+                }
+
+
+                if (tally >= 5) {
+                    listOfMatches.plusElement(allUsers[count])
+                }
+            }
+        }
+        return listOfMatches
+    }
 
 
 
@@ -18,6 +57,8 @@ data class Database(val pointlessVariable: Int):Parcelable{
     fun addToDB(user: User){
         allUsers.plusElement(user)
     }
+
+    //is there a point to this 'getUser' method?
     fun getUser(user: User): User?{
         var count = 0
         while(count < allUsers.size){

@@ -28,8 +28,8 @@ data class User(val usrname: String?) : Parcelable{
     var fullname = ""
     var lgbt = ""
     var matches : List<String> = emptyList()
-    var listOfYes : List<String> = emptyList()
-    var listOfNo : List<String> = emptyList()
+    var listOfYes : List<User> = emptyList()
+    var listOfNo : List<User> = emptyList()
     var roommateGender = ""
     var roommatelgbt = ""
     var roommatesmoke = ""
@@ -41,9 +41,8 @@ data class User(val usrname: String?) : Parcelable{
 
     constructor(parcel: Parcel) : this(parcel.readString()) {
         gender = parcel.readString().toString()
-        age = parcel.readString().toString()
         password = parcel.readString().toString()
-        username = parcel.readString().toString()
+        username = parcel.readString()
         email = parcel.readString().toString()
         profilePic = parcel.readParcelable(Uri::class.java.classLoader)
         dormOne = parcel.readString().toString()
@@ -55,13 +54,14 @@ data class User(val usrname: String?) : Parcelable{
         waketime = parcel.readString().toString()
         pets = parcel.readString().toString()
         alcohol = parcel.readString().toString()
+        age = parcel.readString().toString()
         smoking = parcel.readString().toString()
         introverted = parcel.readString().toString()
         fullname = parcel.readString().toString()
         lgbt = parcel.readString().toString()
         matches = parcel.createStringArrayList()!!
-        listOfYes = parcel.createStringArrayList()!!
-        listOfNo = parcel.createStringArrayList()!!
+        listOfYes = parcel.createTypedArrayList(CREATOR)!!
+        listOfNo = parcel.createTypedArrayList(CREATOR)!!
         roommateGender = parcel.readString().toString()
         roommatelgbt = parcel.readString().toString()
         roommatesmoke = parcel.readString().toString()
@@ -293,64 +293,65 @@ data class User(val usrname: String?) : Parcelable{
 
 
     //search through matches
-    fun foundInYes(username: String):Boolean{
+    fun foundInYes(user:User):Boolean{
         var found = false;
-        if(listOfYes.contains(username)){
+        if(listOfYes.contains(user)){
             found = true
         }
         return found
     }
-    fun foundInNo(username: String):Boolean{
+    fun foundInNo(userr:User):Boolean{
         var found = false;
-        if(listOfNo.contains(username)){
+        if(listOfNo.contains(userr)){
             found = true
         }
         return found
     }
 
     //add to those lists
-    fun addToYes(username: String){
-        listOfYes.plusElement(username)
+    fun addToYes(userr:User){
+        listOfYes.plusElement(userr)
     }
-    fun addToNo(username: String){
-        listOfNo.plusElement(username)
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(usrname)
-        parcel.writeString(gender)
-        parcel.writeString(password)
-        parcel.writeString(username)
-        parcel.writeString(email)
-        parcel.writeParcelable(profilePic, flags)
-        parcel.writeString(dormOne)
-        parcel.writeString(dormTwo)
-        parcel.writeString(dormThree)
-        parcel.writeString(major)
-        parcel.writeString(bio)
-        parcel.writeString(clean)
-        parcel.writeString(waketime)
-        parcel.writeString(pets)
-        parcel.writeString(alcohol)
-        parcel.writeString(smoking)
-        parcel.writeString(introverted)
-        parcel.writeString(fullname)
-        parcel.writeString(lgbt)
-        parcel.writeStringList(matches)
-        parcel.writeStringList(listOfYes)
-        parcel.writeStringList(listOfNo)
-        parcel.writeString(roommateGender)
-        parcel.writeString(roommatelgbt)
-        parcel.writeString(roommatesmoke)
-        parcel.writeString(roommatedrink)
-        parcel.writeString(roommateclean)
-        parcel.writeString(roommateie)
-        parcel.writeString(roommatepets)
-        parcel.writeString(roommatewaketime)
+    fun addToNo(userr: User){
+        listOfNo.plusElement(userr)
     }
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun writeToParcel(p0: Parcel?, p1: Int) {
+        p0?.writeString(usrname)
+        p0?.writeString(gender)
+        p0?.writeString(password)
+        p0?.writeString(username)
+        p0?.writeString(email)
+        p0?.writeParcelable(profilePic, p1)
+        p0?.writeString(dormOne)
+        p0?.writeString(dormTwo)
+        p0?.writeString(dormThree)
+        p0?.writeString(major)
+        p0?.writeString(bio)
+        p0?.writeString(clean)
+        p0?.writeString(waketime)
+        p0?.writeString(pets)
+        p0?.writeString(alcohol)
+        p0?.writeString(age)
+        p0?.writeString(smoking)
+        p0?.writeString(introverted)
+        p0?.writeString(fullname)
+        p0?.writeString(lgbt)
+        p0?.writeStringList(matches)
+        p0?.writeTypedList(listOfYes)
+        p0?.writeTypedList(listOfNo)
+        p0?.writeString(roommateGender)
+        p0?.writeString(roommatelgbt)
+        p0?.writeString(roommatesmoke)
+        p0?.writeString(roommatedrink)
+        p0?.writeString(roommateclean)
+        p0?.writeString(roommateie)
+        p0?.writeString(roommatepets)
+        p0?.writeString(roommatewaketime)
     }
 
     companion object CREATOR : Parcelable.Creator<User> {
