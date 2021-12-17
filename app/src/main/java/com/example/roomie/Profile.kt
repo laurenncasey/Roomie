@@ -29,7 +29,9 @@ class Profile: AppCompatActivity() {
          */
         //NEED THIS TO PASS USER TO OTHER ACTIVITIES
         val user: User? = intent.getParcelableExtra("passedValue")
-
+        val db: Database? = intent.getParcelableExtra("db")//not sure if this is needed but added anyway
+        db as Database                                          // Reasoning being I already added a user to the database in signup so by passing the
+                                                                // user here it should already be available in the database
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
         // profile information to save to database
