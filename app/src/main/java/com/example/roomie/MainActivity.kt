@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.room.Room
 import androidx.fragment.app.Fragment
 //import com.google.firebase.FirebaseOptions
@@ -43,8 +44,20 @@ class MainActivity : AppCompatActivity() {
            startActivity(intent)
        }
         findViewById<Button>(R.id.login).setOnClickListener{
+                //check for a user with the same user name and password, call function in database class
+                val tempUsername = usrInput.text.toString()
+                val tempPassword = pwdInput.text.toString()
+                val user: User? = DB.findUser(tempUsername, tempPassword)
+                if(user != null){
+                    val bundle = Bundle()
+                    bundle.putParcelable("passedValue", user)
+                    bundle.putParcelable("db", DB)
+                    startActivity(Intent(this, Profile::class.java))
+                }
+                else{
+                    Toast.makeText(applicationContext, "Could not login retry username and password", Toast.LENGTH_SHORT).show()
+                }
 
-                startActivity(Intent(this, Profile::class.java))
         }
 
         findViewById<Button>(R.id.forgotpwd).setOnClickListener{

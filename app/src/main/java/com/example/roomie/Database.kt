@@ -51,7 +51,16 @@ data class Database(val pointlessVariable: Int):Parcelable{
         return listOfMatches
     }
 
+    fun findUser(username: String, password: String): User? {
 
+
+        for(i in 0..allUsers.size){
+            if(allUsers[i].getusername() == username && allUsers[i].getpassword() == password){
+                return allUsers[i]
+            }
+        }
+        return null
+    }
 
 
     fun addToDB(user: User){
