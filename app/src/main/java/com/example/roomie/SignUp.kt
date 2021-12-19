@@ -13,7 +13,6 @@ class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
         val username = findViewById<TextView>(R.id.setusr1)
         val setpwd = findViewById<TextView>(R.id.setpwd)
         val confirmPwd = findViewById<TextView>(R.id.setpwd2)
@@ -34,24 +33,15 @@ class SignUp : AppCompatActivity() {
         }
         findViewById<Button>(R.id.confirmsignUp).setOnClickListener {
             //signing up creates a new user
-            if(setpwd.text.toString() == confirmPwd.text.toString()) {//verify confirm and set pw are the same
-                val newUser = User(usrname = username.text.toString())
-                newUser.setusername(username.text.toString())
-                newUser.setpassword(confirmPwd.text.toString())
-                newUser.setemail(email.text.toString())
-                numOfUsers += 1
-                //access object to add user to
-                val tempDB :Database?= intent.getParcelableExtra("db")
-                tempDB as Database
-                tempDB.addToDB(newUser)
-                val bundle = Bundle()
-                bundle.putParcelable("passedValue", newUser)
-                bundle.putParcelable("db", tempDB)
-                //Profile needs this user to add other preferences into their profile
-                startActivity(Intent(this, Profile::class.java))
+            val newUser = User(usrname = username.text.toString())
+            newUser.setusername(username.text.toString())
+            numOfUsers+=1
+            val bundle = Bundle()
+            bundle.putParcelable("passedValue", newUser)
+            //Profile needs this user to add other preferences into their profile
+            startActivity(Intent(this, Profile::class.java))
 
 
-            }
 
         }
     }

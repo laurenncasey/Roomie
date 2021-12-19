@@ -9,6 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.FirebaseOptions
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 /**
  * Author: Zach Terry
@@ -22,10 +26,17 @@ class Matches : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+//        val user: User? = intent.getParcelableExtra("passedValue")
+
         val matches = ArrayList<ItemsViewModel>()
+//        val matchedUsers = user?.getMatchesList()
+
+//        for (i in matchedUsers.orEmpty()) {
+//            matches.add(ItemsViewModel(user.profilePic, user.fullname))
+//        }
 
         for (i in 1..20) {
-            matches.add(ItemsViewModel("Item " + i))
+            matches.add(ItemsViewModel("jeffrey"))
         }
 
         val adapter = MatchesAdapter(matches)
