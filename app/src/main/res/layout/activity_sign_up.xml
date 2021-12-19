@@ -4,9 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9E83C3"
+    android:background="#9E83C3">
     tools:context=".SignUp">
 
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headersignup">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/setusr1"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="100dp"
+                android:background="#8AFFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@string/set_username"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/setpwd"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#8AFFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@string/set_password"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/setpwd2"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#8AFFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@string/confirm_password"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/emaildisclaimer"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/provide_us_with_an_email_we_will_only_use_this_for_password_resetting"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/inputemail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#8AFFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textEmailSubject"
+                android:text="@string/email"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/confirmsignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/sign_up"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <TextView
+                android:id="@+id/error1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/please_fill_in_all_the_blanks"
+                android:textAlignment="center"
+                android:textColor="#C30000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck"
+                tools:visibility="invisible" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/signupBack"
@@ -30,103 +124,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupBack" />
 
-    <EditText
-        android:id="@+id/setusr1"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:background="#8AFFFFFF"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/set_username"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headersignup"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/setpwd"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="#8AFFFFFF"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/set_password"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setusr1"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/setpwd2"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="#8AFFFFFF"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/confirm_password"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setpwd"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/emaildisclaimer"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/provide_us_with_an_email_we_will_only_use_this_for_password_resetting"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setpwd2" />
-
-    <EditText
-        android:id="@+id/inputemail"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="#8AFFFFFF"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textEmailSubject"
-        android:text="@string/email"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emaildisclaimer" />
-
-    <Button
-        android:id="@+id/confirmsignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="@string/sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputemail"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <TextView
-        android:id="@+id/error1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/please_fill_in_all_the_blanks"
-        android:textAlignment="center"
-        android:textColor="#C30000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confirmsignUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputemail"
-        tools:ignore="TextContrastCheck"
-        tools:visibility="invisible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

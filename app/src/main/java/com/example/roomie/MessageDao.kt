@@ -1,7 +1,6 @@
 package com.example.roomie
 
-import androidx.room.*
-import com.example.roomie.UserEntity
+//import androidx.room.*
 
 //@Dao
 public interface MessageDao {
@@ -10,16 +9,16 @@ public interface MessageDao {
 
      */
 
-    @Query("SELECT * FROM messagingentity")
-    fun getAll(): List<MessagingEntity>
-
-    @Insert
-    fun insert(message: MessagingEntity)
-
-    @Delete
-    fun delete(message: MessagingEntity)
-
-    @Update
-    fun update(message: MessagingEntity)
+//    @Query("SELECT * FROM messagingentity")
+//    fun getAll(): List<MessagingEntity>
+//
+//    @Insert
+//    fun insert(message: MessagingEntity)
+//
+//    @Delete
+//    fun delete(message: MessagingEntity)
+//
+//    @Update
+//    fun update(message: MessagingEntity)
 
 }
