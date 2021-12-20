@@ -339,20 +339,24 @@ data class User(val usrname: String?) : Parcelable{
         }
         return found
     }
-    fun foundInNo(userr:User):Boolean{
+    fun foundInNo(user:User):Boolean{
         var found = false;
-        if(listOfNo.contains(userr)){
+        if(listOfNo.contains(user)){
             found = true
         }
         return found
     }
 
     //add to those lists
-    fun addToYes(userr:User){
-        listOfYes.plusElement(userr)
+    fun addToYes(user:User){
+        listOfYes += user
     }
-    fun addToNo(userr: User){
-        listOfNo.plusElement(userr)
+    fun addToNo(user: User){
+        listOfNo += user
+    }
+
+    fun getYesList():List<User> {
+        return listOfYes
     }
 
     override fun describeContents(): Int {

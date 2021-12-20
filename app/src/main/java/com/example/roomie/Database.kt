@@ -150,6 +150,8 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
         addToDB(newUser3)
     }
 
+
+
     fun addToDB(user: User) {
         allUsers.add(user)
     }
