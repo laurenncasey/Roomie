@@ -20,19 +20,17 @@ class Message : AppCompatActivity() {
         setContentView(R.layout.activity_message)
 
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChat)
+        val matchName = findViewById<TextView>(R.id.UsernameDisplay)
 
         val messages = ArrayList<MessageItem>()
 
-        messages.add(MessageItem.SendMessageItem("hi gamer"))
-        messages.add(MessageItem.ReceiveMessageItem("e"))
-        messages.add(MessageItem.SendMessageItem("hi gamer"))
-        messages.add(MessageItem.ReceiveMessageItem("e"))
-        messages.add(MessageItem.SendMessageItem("hi gamer"))
-        messages.add(MessageItem.ReceiveMessageItem("e"))
-        messages.add(MessageItem.SendMessageItem("hi gamer"))
-        messages.add(MessageItem.ReceiveMessageItem("e"))
-        messages.add(MessageItem.SendMessageItem("hi gamer"))
-        messages.add(MessageItem.ReceiveMessageItem("e"))
+        matchName.text = "John Smith"
+
+        //temp hardcode
+        messages.add(MessageItem.SendMessageItem("Hey buddy"))
+        messages.add(MessageItem.ReceiveMessageItem("hey what is up"))
+        messages.add(MessageItem.SendMessageItem("Nothing much, how about you"))
+        messages.add(MessageItem.ReceiveMessageItem("Just getting ready to go bowling, you wanna come with?"))
 
         val adapter = MessageAdapter(messages)
 
@@ -42,6 +40,9 @@ class Message : AppCompatActivity() {
             //get text from text box
             var messageText = findViewById<TextView>(R.id.EditMessage)
             //add message as an item
+            if (!messageText.text.toString().isEmpty()) {
+
+            }
             messages.add(MessageItem.SendMessageItem(messageText.text.toString()))
             //notify adapter of change
             adapter.notifyItemRangeInserted(messages.size -1, 1)
@@ -82,16 +83,19 @@ class MessageAdapter(private val messageList: List<MessageItem>) :RecyclerView.A
 
     }
 
+    //bind item
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.bind(messageList[position])
 
     }
 
+    //determine if item is a sent or received message
     override fun getItemViewType(position: Int): Int {
         return when (messageList[position]) {
             is MessageItem.SendMessageItem -> 0
             is MessageItem.ReceiveMessageItem -> 1
+            else -> 2
         }
     }
 
@@ -101,6 +105,7 @@ class MessageAdapter(private val messageList: List<MessageItem>) :RecyclerView.A
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        //bind receive messages
         private fun bindReceiveMessage(item: MessageItem.ReceiveMessageItem) {
 
             val textView = itemView.findViewById<TextView>(R.id.matchMessage)
@@ -110,6 +115,7 @@ class MessageAdapter(private val messageList: List<MessageItem>) :RecyclerView.A
 
         }
 
+        //bind send messages
         private fun bindSendMessage(item: MessageItem.SendMessageItem) {
 
             val textView = itemView.findViewById<TextView>(R.id.userMessage)
@@ -118,6 +124,7 @@ class MessageAdapter(private val messageList: List<MessageItem>) :RecyclerView.A
 
         }
 
+        //bind goes to either bind send or receive messages
         fun bind(messageItem: MessageItem) {
 
             when (messageItem) {

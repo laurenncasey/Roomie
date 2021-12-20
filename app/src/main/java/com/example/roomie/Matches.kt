@@ -26,35 +26,50 @@ class Matches : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //pass in user & db
-//        val user: User? = intent.getParcelableExtra("passedValue")
-//        user as User
-//        val tempDB :Database?= intent.getParcelableExtra("db")
-//        tempDB as Database
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
 
         //list to be passed into view
         val matches = ArrayList<ItemsViewModel>()
 
-        //list of yes list
-//        val userYesList = user.getYesList()
-
-        //for all users in yes list, check if they are a match. If so, add to matches list
-//        for (i in userYesList) {
+//        if (user != null) {
 //
-//            if (i.foundInYes(user)) {
+//            //list of yes list
+//            val userYesList = user.getYesList()
 //
-//                val matchName = i.fullname
+//            //for all users in yes list, check if they are a match. If so, add to matches list
+//            for (i in userYesList) {
 //
-//                matches.add(ItemsViewModel(matchName))
+//                if (i.foundInYes(user)) {
 //
+//                    val matchName = i.fullname
+//
+//                    matches.add(ItemsViewModel(matchName))
+//
+//                }
 //            }
 //        }
 
-        for (i in 1..5) {
-            matches.add(ItemsViewModel("hi"))
-        }
+        matches.add(ItemsViewModel("John Smith"))
+        matches.add(ItemsViewModel("Jill Doe"))
+        matches.add(ItemsViewModel("Jack Daniels"))
+        matches.add(ItemsViewModel("Jeffrey"))
+        matches.add(ItemsViewModel("Jeffrey 2"))
+        matches.add(ItemsViewModel("Spider Man"))
+        matches.add(ItemsViewModel("Bat Man"))
+        matches.add(ItemsViewModel("Iron Man"))
+        matches.add(ItemsViewModel("Jeffrey 3"))
+        matches.add(ItemsViewModel("Zach Terry"))
+        matches.add(ItemsViewModel("Jeffrey 4"))
+        matches.add(ItemsViewModel("Jeff"))
+        matches.add(ItemsViewModel("Jeffrey 6"))
+
 
         // create adapter with matches list & on click listener to message activity
-        val adapter = MatchesAdapter(matches) {itemsViewModel -> startActivity(Intent(this, Message::class.java)) }
+        val intent = Intent(this, Message::class.java)
+        val adapter = MatchesAdapter(matches) {itemsViewModel -> startActivity(intent) }
 
         //set adpadter for recycler view
         recyclerView.adapter = adapter
@@ -96,7 +111,9 @@ class MatchesAdapter(private val matchesList: List<ItemsViewModel>, private val 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-//        val pictureView = itemView.findViewById<ImageView>(R.id.PictureView)
+
+
+        //        val pictureView = itemView.findViewById<ImageView>(R.id.PictureView)
         val textView = itemView.findViewById<TextView>(R.id.NameView)
 
     }
