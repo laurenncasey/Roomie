@@ -23,9 +23,7 @@ import android.media.Image
 import android.os.Parcelable
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
 import androidx.room.Room
-import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import java.io.File
 
@@ -72,14 +70,6 @@ class Profile: AppCompatActivity() {
         /**
          * Set profile's set values to it's default show values
          */
-
-//        findViewById<Spinner>(R.id.Gender).set
-//        fun ifNotNull(item : View, selected: String){
-//            if(item != null){
-//                item.set
-//            }
-//        }
-
 
 
 
