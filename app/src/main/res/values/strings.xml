@@ -185,4 +185,5 @@
     <string name="drink">drink</string>
     <string name="paw">paw</string>
     <string name="clean">clean</string>
+    <string name="log_out">Log Out</string>
 </resources>

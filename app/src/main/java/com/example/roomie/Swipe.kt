@@ -18,38 +18,39 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
         val accept = findViewById<FloatingActionButton>(R.id.yes)
         val decline = findViewById<FloatingActionButton>(R.id.no)
 
-
         //grab user passed
-        val user: User? = intent.getParcelableExtra("passedValue")
-        user as User
-        val tempDB :Database?= intent.getParcelableExtra("db")
-        tempDB as Database
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
 
         val frag = ProfileHolder()
         val initFrag = supportFragmentManager.beginTransaction()
         var counter = 0
 
-        val listOfMatches = tempDB.getMatchesList(user)
-        while(counter< listOfMatches.size) {
-            //i is find that user in DB
-            val i = listOfMatches[counter]
-            //set frag data as this user
-            frag.setValues(i.getprofilepic() as Uri, i.getusername().toString(), i.getage(), i.getgender(), i.getlgbt(), i.getbio(), i.getsmoke(), i.getalco(), i.getpets(), i.getclean(), i.getdormone(), i.getdormtwo(), i.getdormthree())
-            initFrag.add(R.id.profileHandlerFrag, frag)
-            initFrag.commit()
+        val listOfMatches = user?.let { db.getMatchesList(it) }
+        if (listOfMatches != null) {
+            while(counter< listOfMatches.size) {
+                //i is find that user in DB
+                val i = listOfMatches[counter]
+                //set frag data as this user
+                frag.setValues(i.getprofilepic() as Uri, i.getusername().toString(), i.getage(), i.getgender(), i.getlgbt(), i.getbio(), i.getsmoke(), i.getalco(), i.getpets(), i.getclean(), i.getdormone(), i.getdormtwo(), i.getdormthree())
+                initFrag.add(R.id.profileHandlerFrag, frag)
+                initFrag.commit()
 
 
-            accept?.setOnClickListener {
-                //add person to yes's and move on
+                accept?.setOnClickListener {
+                    //add person to yes's and move on
 
-                user.addToYes(listOfMatches[counter])
-                counter += 1
+                    user.addToYes(listOfMatches[counter])
+                    counter += 1
 
-            }
-            decline?.setOnClickListener {
-                //add person to no's and move on
-                user.addToNo(listOfMatches[counter])
-                counter += 1
+                }
+                decline?.setOnClickListener {
+                    //add person to no's and move on
+                    user.addToNo(listOfMatches[counter])
+                    counter += 1
+                }
             }
         }
     }
