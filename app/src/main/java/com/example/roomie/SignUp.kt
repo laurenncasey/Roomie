@@ -6,6 +6,7 @@ import android.os.Bundle
 //import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 
 class SignUp : AppCompatActivity() {
@@ -19,7 +20,7 @@ class SignUp : AppCompatActivity() {
         val confirmPwd = findViewById<TextView>(R.id.setpwd2)
         val email = findViewById<TextView>(R.id.inputemail)
         val errorSignUp = findViewById<TextView>(R.id.error1)
-
+        val tempDB = Database(0)
     //generate id
 
         var numOfUsers = 0
@@ -41,16 +42,17 @@ class SignUp : AppCompatActivity() {
                 newUser.setemail(email.text.toString())
                 numOfUsers += 1
                 //access object to add user to
-                val tempDB :Database?= intent.getParcelableExtra("db")
-                tempDB as Database
+
+
                 tempDB.addToDB(newUser)
                 val bundle = Bundle()
                 bundle.putParcelable("passedValue", newUser)
                 bundle.putParcelable("db", tempDB)
                 //Profile needs this user to add other preferences into their profile
                 startActivity(Intent(this, Profile::class.java))
-
-
+            }
+            else{
+                Toast.makeText(applicationContext, "Passwords don't match", Toast.LENGTH_SHORT).show()
             }
 
         }
