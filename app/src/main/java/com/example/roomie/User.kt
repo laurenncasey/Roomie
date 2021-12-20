@@ -124,13 +124,13 @@ data class User(val usrname: String?) : Parcelable{
 
     fun resetRoommatePreferences() {
 
-        var roommateGender = ""
-        var roommatelgbt = ""
-        var roommatesmoke = ""
-        var roommatedrink = ""
-        var roommateclean = ""
-        var roommateie = ""
-        var roommatepets = ""
+        var roommateGender = -1
+        var roommatelgbt = -1
+        var roommatesmoke = -1
+        var roommatedrink = -1
+        var roommateclean = -1
+        var roommateie = -1
+        var roommatepets = -1
     }
     //username
     fun setusername(setUsername : String){

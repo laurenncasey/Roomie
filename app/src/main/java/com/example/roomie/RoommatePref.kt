@@ -19,7 +19,10 @@ class RoommatePref (): AppCompatActivity() {
 
         val discl = findViewById<TextView>(R.id.roomieDisc)
 
-        val user: User? = intent.getParcelableExtra("passedValue")
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
 
         //roomie preferences to save
     val genderR : Spinner = findViewById(R.id.genderRoom)
@@ -60,9 +63,12 @@ class RoommatePref (): AppCompatActivity() {
 
         findViewById<Button>(R.id.backInR).setOnClickListener{
             val intent = Intent(this, Profile::class.java)
-            val bundle = Bundle()
-            bundle.putParcelable("passedValue", user)
-            intent.putExtra("passed", bundle)
+            val bundle2 = Bundle()
+            bundle2.putString("passedValue", username)
+            bundle2.putParcelable("db", db)
+            intent.putExtra("Hello", username)
+            intent.putExtras(bundle2)
+            startActivity(intent)
             startActivity(intent)
         }
     }

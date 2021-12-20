@@ -31,12 +31,11 @@ class MainActivity : AppCompatActivity() {
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            //HAVE TO PASS USER
-           val intent = Intent(this, SignUp::class.java)
            val bundle = Bundle()
-           val user = User(usrInput.text.toString())
-           bundle.putParcelable("passedValue", user)
+           bundle.putString("passedValue", "")
            bundle.putParcelable("db", DB)
-           intent.putExtra("passed", bundle)
+           intent = Intent(this@MainActivity, SignUp::class.java)
+           intent.putExtras(bundle)
            startActivity(intent)
        }
         findViewById<Button>(R.id.login).setOnClickListener{

@@ -36,6 +36,7 @@ class Profile: AppCompatActivity() {
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
         // profile information to save to database
+        var profilePicker = findViewById<ImageView>(R.id.imageInput)
         val fullname = findViewById<TextView>(R.id.name)
         val genderUser = findViewById<Spinner>(R.id.Gender)
         val cleanDirty = findViewById<Spinner>(R.id.cleanordirty)
@@ -49,6 +50,7 @@ class Profile: AppCompatActivity() {
         val dorm2 = findViewById<Spinner>(R.id.dorms2)
         val dorm3 = findViewById<Spinner>(R.id.dorms3)
         fullname.text = user?.getfullname();
+        profilePicker.setImageURI(user?.getprofilepic())
         if (user != null) {
             genderUser.setSelection(user.getgender())
             cleanDirty.setSelection(user.getclean())
@@ -83,7 +85,6 @@ class Profile: AppCompatActivity() {
          * Pick profile picture from gallery and save to profile and load up initially
          */
 
-        var profilePicker = findViewById<ImageView>(R.id.imageInput)
 
         var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -127,8 +128,12 @@ class Profile: AppCompatActivity() {
          * takes the user to the roommate preferences information input activity
          */
         findViewById<Button>(R.id.roomiePref).setOnClickListener {
-            val intent = Intent(this, RoommatePref::class.java)
-            intent.putExtra("passed", bundle)
+            val bundle2 = Bundle()
+            bundle2.putString("passedValue", username)
+            bundle2.putParcelable("db", db)
+            intent = Intent(this@Profile, RoommatePref::class.java)
+            intent.putExtra("Hello", username)
+            intent.putExtras(bundle2)
             startActivity(intent)
         }
         /**
@@ -136,8 +141,12 @@ class Profile: AppCompatActivity() {
          */
         findViewById<Button>(R.id.settings).setOnClickListener {
             //passing user info into settings for deletion and things
-            val intent = Intent(this, Settings::class.java)
-            intent.putExtra("passed", bundle)
+            val bundle2 = Bundle()
+            bundle2.putString("passedValue", username)
+            bundle2.putParcelable("db", db)
+            intent = Intent(this@Profile, Settings::class.java)
+            intent.putExtra("Hello", username)
+            intent.putExtras(bundle2)
             startActivity(intent)
         }
     }

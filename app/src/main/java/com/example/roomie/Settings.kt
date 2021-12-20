@@ -20,8 +20,8 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
         //we can use this to set any about or information for the user in the settings
         val setText: TextView = findViewById(R.id.settingtext)
-
-        val bundle = intent.getExtras();
+        val helloString = intent.getStringExtra("Hello")
+        val bundle = intent.extras;
         val db: Database? = bundle?.getParcelable("db")
         val username: String? = bundle?.getString("passedValue")
         val user: User? = db?.getUser(username)
@@ -30,7 +30,13 @@ class Settings : AppCompatActivity() {
         setText.text = "Roomie consists of different features to perfectly match you to a roommate at UW-Eau Claire. Any information filled out in your profile may be displayed in your roommate profile for the public to see. Any information filled in your roommate preferences will stay private from the public eye, but will be used in the matching algorithm. You may reset your profile or roommate preferences, which clears all information back to the default. You may delete your account. Deleting your account is irreversible and you will lose all information tied to your account. Roomie does not track data, and does not ask for any permissions outside the app. We simply take your information for a matching algorith and profile to find you an ideal roommate. Thanks for using Roomie!"
 
         findViewById<Button>(R.id.back).setOnClickListener{
-            startActivity(Intent(this, Profile::class.java))
+            val bundle2 = Bundle()
+            bundle2.putString("passedValue", username)
+            bundle2.putParcelable("db", db)
+            intent = Intent(this@Settings, Profile::class.java)
+            intent.putExtra("Hello", username)
+            intent.putExtras(bundle2)
+            startActivity(intent)
 
         }
 
@@ -60,7 +66,13 @@ class Settings : AppCompatActivity() {
         findViewById<Button>(R.id.delAcc).setOnClickListener{
             if (user != null) {
                 db?.removeUser( user)
-                startActivity(Intent(this, MainActivity::class.java))
+                val bundle2 = Bundle()
+                bundle2.putString("passedValue", username)
+                bundle2.putParcelable("db", db)
+                intent = Intent(this@Settings, MainActivity::class.java)
+                intent.putExtra("Hello", username)
+                intent.putExtras(bundle2)
+                startActivity(intent)
             };
             Toast.makeText(applicationContext, "Account Successfully Deleted", Toast.LENGTH_SHORT).show()
         }
