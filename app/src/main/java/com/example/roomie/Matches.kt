@@ -1,5 +1,7 @@
 package com.example.roomie
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.FirebaseOptions
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+
 
 /**
  * Author: Zach Terry
@@ -26,35 +25,50 @@ class Matches : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //pass in user & db
 //        val user: User? = intent.getParcelableExtra("passedValue")
+//        user as User
+//        val tempDB :Database?= intent.getParcelableExtra("db")
+//        tempDB as Database
 
+        //list to be passed into view
         val matches = ArrayList<ItemsViewModel>()
-//        val matchedUsers = user?.getMatchesList()
 
-//        for (i in matchedUsers.orEmpty()) {
-//            matches.add(ItemsViewModel(user.profilePic, user.fullname))
+        //list of yes list
+//        val userYesList = user.getYesList()
+
+        //for all users in yes list, check if they are a match. If so, add to matches list
+//        for (i in userYesList) {
+//
+//            if (i.foundInYes(user)) {
+//
+//                val matchName = i.fullname
+//
+//                matches.add(ItemsViewModel(matchName))
+//
+//            }
 //        }
 
-        for (i in 1..20) {
-            matches.add(ItemsViewModel("jeffrey"))
+        for (i in 1..5) {
+            matches.add(ItemsViewModel("hi"))
         }
 
-        val adapter = MatchesAdapter(matches)
+        // create adapter with matches list & on click listener to message activity
+        val adapter = MatchesAdapter(matches) {itemsViewModel -> startActivity(Intent(this, Message::class.java)) }
 
+        //set adpadter for recycler view
         recyclerView.adapter = adapter
 
     }
 }
 
-//data class ItemsViewModel(val image: Int, val name: String) {
-//
-//}
-
+//data class for individual items
 data class ItemsViewModel(val name: String) {
 
 }
 
-class MatchesAdapter(private val matchesList: List<ItemsViewModel>) :RecyclerView.Adapter<MatchesAdapter.ViewHolder>() {
+//custom adapter class for recycler view
+class MatchesAdapter(private val matchesList: List<ItemsViewModel>, private val listener: (ItemsViewModel) -> Unit) :RecyclerView.Adapter<MatchesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -66,11 +80,13 @@ class MatchesAdapter(private val matchesList: List<ItemsViewModel>) :RecyclerVie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = matchesList[position]
+        val itemsViewModel = matchesList[position]
 
 //        holder.pictureView.setImageResource(ItemsViewModel.image)
 
-        holder.textView.text = ItemsViewModel.name
+        holder.textView.text = itemsViewModel.name
+
+        holder.itemView.setOnClickListener{listener(itemsViewModel)}
 
     }
 
@@ -78,7 +94,7 @@ class MatchesAdapter(private val matchesList: List<ItemsViewModel>) :RecyclerVie
         return matchesList.size
     }
 
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 //        val pictureView = itemView.findViewById<ImageView>(R.id.PictureView)
         val textView = itemView.findViewById<TextView>(R.id.NameView)

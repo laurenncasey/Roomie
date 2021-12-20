@@ -33,30 +33,30 @@ class MainActivity : AppCompatActivity() {
 
         val DB = Database(0)
 
-       findViewById<Button>(R.id.signup).setOnClickListener{
-           //HAVE TO PASS USER
-           val intent = Intent(this, SignUp::class.java)
-           val bundle = Bundle()
-           val user = User(usrInput.text.toString())
-           bundle.putParcelable("passedValue", user)
-           bundle.putParcelable("db", DB)
-           intent.putExtra("passed", bundle)
-           startActivity(intent)
-       }
+        findViewById<Button>(R.id.signup).setOnClickListener{
+            //HAVE TO PASS USER
+            val intent = Intent(this, SignUp::class.java)
+            val bundle = Bundle()
+            val user = User(usrInput.text.toString())
+            bundle.putParcelable("passedValue", user)
+            bundle.putParcelable("db", DB)
+            intent.putExtra("passed", bundle)
+            startActivity(intent)
+        }
         findViewById<Button>(R.id.login).setOnClickListener{
-                //check for a user with the same user name and password, call function in database class
-                val tempUsername = usrInput.text.toString()
-                val tempPassword = pwdInput.text.toString()
-                val user: User? = DB.findUser(tempUsername, tempPassword)
-                if(user != null){
-                    val bundle = Bundle()
-                    bundle.putParcelable("passedValue", user)
-                    bundle.putParcelable("db", DB)
-                    startActivity(Intent(this, Profile::class.java))
-                }
-                else{
-                    Toast.makeText(applicationContext, "Could not login retry username and password", Toast.LENGTH_SHORT).show()
-                }
+            //check for a user with the same user name and password, call function in database class
+            val tempUsername = usrInput.text.toString()
+            val tempPassword = pwdInput.text.toString()
+            val user: User? = DB.findUser(tempUsername, tempPassword)
+            if(user != null){
+                val bundle = Bundle()
+                bundle.putParcelable("passedValue", user)
+                bundle.putParcelable("db", DB)
+                startActivity(Intent(this, Profile::class.java))
+            }
+            else{
+                Toast.makeText(applicationContext, "Could not login retry username and password", Toast.LENGTH_SHORT).show()
+            }
 
         }
 

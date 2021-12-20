@@ -6,4 +6,57 @@
     android:layout_height="match_parent">
     tools:context=".Message">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView3"
+        android:name="com.example.roomie.NavBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/EditMessage"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Enter Message"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView3"
+        app:layout_constraintEnd_toStartOf="@+id/SendMessageButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/SendMessageButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="@+id/EditMessage"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewChat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/EditMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UsernameDisplay" />
+
+    <TextView
+        android:id="@+id/UsernameDisplay"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/teal_700"
+        android:paddingLeft="10dp"
+        android:text="Username"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
