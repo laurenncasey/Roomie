@@ -30,34 +30,32 @@ class RoommatePref (): AppCompatActivity() {
     val ieR: Spinner = findViewById(R.id.introextroRoom)
     val petsR: Spinner = findViewById(R.id.petsRoom)
     val nightR: Spinner = findViewById(R.id.nightRoom)
-
-
         discl.text = "Tell us your roommate preferences! These will be kept private but used in your matching algorithm to find potential roommates! You do not have to answer every one, but keep in mind, the more you fill out the better matches you will get!"
-
         /**
          * DEFAULT SHOW??
          */
-
-
-
-
-
-
-
-
-
+        if (user != null) {
+            genderR.setSelection(user.getgender())
+            lgbtR.setSelection(user.getclean())
+            smokesR.setSelection(user.getwake())
+            drinksR.setSelection(user.getintrovert())
+            cleanR.setSelection(user.getpets())
+            ieR.setSelection(user.getalco())
+            petsR.setSelection(user.getsmoke())
+            nightR.setSelection(user.getlgbt())
+        }
         /**
          * set Roommate preferences
          */
         findViewById<Button>(R.id.save).setOnClickListener{
-            user?.setRGender(genderR.selectedItem.toString())
-            user?.setRLgbt(lgbtR.selectedItem.toString())
-            user?.setRSmokes(smokesR.selectedItem.toString())
-            user?.setRDrinks(drinksR.selectedItem.toString())
-            user?.setRClean(cleanR.selectedItem.toString())
-            user?.setRIE(ieR.selectedItem.toString())
-            user?.setRPets(petsR.selectedItem.toString())
-            user?.setRWaketime(nightR.selectedItem.toString())
+            user?.setRGender(genderR.selectedItemPosition)
+            user?.setRLgbt(lgbtR.selectedItemPosition)
+            user?.setRSmokes(smokesR.selectedItemPosition)
+            user?.setRDrinks(drinksR.selectedItemPosition)
+            user?.setRClean(cleanR.selectedItemPosition)
+            user?.setRIE(ieR.selectedItemPosition)
+            user?.setRPets(petsR.selectedItemPosition)
+            user?.setRWaketime(nightR.selectedItemPosition)
         }
 
         findViewById<Button>(R.id.backInR).setOnClickListener{

@@ -23,7 +23,10 @@ open class NavBar : Fragment(){
 
 
 
-       val user: User? = activity?.intent?.getParcelableExtra("passedValue")
+        val bundle = activity?.intent?.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
 
 
 

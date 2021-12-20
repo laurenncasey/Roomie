@@ -49,6 +49,19 @@ class Profile: AppCompatActivity() {
         val dorm2 = findViewById<Spinner>(R.id.dorms2)
         val dorm3 = findViewById<Spinner>(R.id.dorms3)
         fullname.text = user?.getfullname();
+        if (user != null) {
+            genderUser.setSelection(user.getgender())
+            cleanDirty.setSelection(user.getclean())
+            birdOwl.setSelection(user.getwake())
+            ie.setSelection(user.getintrovert())
+            pets.setSelection(user.getpets())
+            drinks.setSelection(user.getalco())
+            smokes.setSelection(user.getsmoke())
+            lgbt.setSelection(user.getlgbt())
+            dorm1.setSelection(user.getdormone())
+            dorm2.setSelection(user.getdormtwo())
+            dorm3.setSelection(user.getdormthree())
+        }
         disclaimerText.text =
             "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,19 +106,19 @@ class Profile: AppCompatActivity() {
         findViewById<Button>(R.id.saveprof).setOnClickListener {
 
             db?.getUser(username)?.setfullname(fullname.text.toString())
-            db?.getUser(username)?.setgender(genderUser.selectedItem.toString())
+            db?.getUser(username)?.setgender(genderUser.selectedItemPosition)
             //picture working???
             db?.getUser(username)?.setprofilepic((Uri.parse(profilePicker.toString())))
-            db?.getUser(username)?.setclean(cleanDirty.selectedItem.toString())
-            db?.getUser(username)?.setwake(birdOwl.selectedItem.toString())
-            db?.getUser(username)?.setintrovert(ie.selectedItem.toString())
-            db?.getUser(username)?.setpets(pets.selectedItem.toString())
-            db?.getUser(username)?.setalco(drinks.selectedItem.toString())
-            db?.getUser(username)?.setsmoke(smokes.selectedItem.toString())
-            db?.getUser(username)?.setlgbt(lgbt.selectedItem.toString())
-            db?.getUser(username)?.setdormone(dorm1.selectedItem.toString())
-            db?.getUser(username)?.setdormtwo(dorm2.selectedItem.toString())
-            db?.getUser(username)?.setdormthree(dorm3.selectedItem.toString())
+            db?.getUser(username)?.setclean(cleanDirty.selectedItemPosition)
+            db?.getUser(username)?.setwake(birdOwl.selectedItemPosition)
+            db?.getUser(username)?.setintrovert(ie.selectedItemPosition)
+            db?.getUser(username)?.setpets(pets.selectedItemPosition)
+            db?.getUser(username)?.setalco(drinks.selectedItemPosition)
+            db?.getUser(username)?.setsmoke(smokes.selectedItemPosition)
+            db?.getUser(username)?.setlgbt(lgbt.selectedItemPosition)
+            db?.getUser(username)?.setdormone(dorm1.selectedItemPosition)
+            db?.getUser(username)?.setdormtwo(dorm2.selectedItemPosition)
+            db?.getUser(username)?.setdormthree(dorm3.selectedItemPosition)
             Toast.makeText(applicationContext, "Profile Saved", Toast.LENGTH_SHORT).show()
 
         }

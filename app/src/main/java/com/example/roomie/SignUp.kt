@@ -20,7 +20,8 @@ class SignUp : AppCompatActivity() {
         val confirmPwd = findViewById<TextView>(R.id.setpwd2)
         val email = findViewById<TextView>(R.id.inputemail)
         val errorSignUp = findViewById<TextView>(R.id.error1)
-        val tempDB = Database(0)
+        val tempDB = Database(0, ArrayList())
+
     //generate id
 
         var numOfUsers = 0
@@ -42,7 +43,6 @@ class SignUp : AppCompatActivity() {
                 newUser.setemail(email.text.toString())
                 numOfUsers += 1
                 //access object to add user to
-
 
                 tempDB.addToDB(newUser)
                 val bundle = Bundle()

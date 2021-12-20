@@ -3,7 +3,6 @@ package com.example.roomie
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcel
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
-        val DB = Database(0)
+        val DB = Database(0, ArrayList())
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            //HAVE TO PASS USER

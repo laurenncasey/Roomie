@@ -2,11 +2,16 @@ package com.example.roomie
 
 import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.parcelize.Parceler
+import kotlinx.parcelize.Parcelize
 
-data class Database(val pointlessVariable: Int) : Parcelable {
+@Parcelize
+data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Parcelable {
     var allUsers: ArrayList<User> = ArrayList()
 
-    constructor(parcel: Parcel) : this(parcel.readInt())
+    init {
+        allUsers = usrs;
+    }
     fun getMatchesList(user: User): List<User> {
         var count = 0
         var listOfMatches = emptyList<User>()
@@ -78,6 +83,25 @@ data class Database(val pointlessVariable: Int) : Parcelable {
         newUser1.setpassword("987")
         newUser1.setusername("Temp2")
         newUser1.setfullname("John Smith")
+        newUser1.setgender(1)
+        newUser1.setlgbt(1)
+        newUser1.setclean(1)
+        newUser1.setwake(1)
+        newUser1.setintrovert(1)
+        newUser1.setpets(1)
+        newUser1.setalco(1)
+        newUser1.setsmoke(1)
+        newUser1.setdormone(1)
+        newUser1.setdormtwo(2)
+        newUser1.setdormthree(3)
+        newUser1.setRClean(1)
+        newUser1.setRDrinks(1)
+        newUser1.setRGender(1)
+        newUser1.setRIE(1)
+        newUser1.setRLgbt(1)
+        newUser1.setRPets(1)
+        newUser1.setRSmokes(1)
+        newUser1.setRWaketime(1)
         addToDB(newUser1)
 
         val newUser3 = User(usrname = "Test2")
@@ -117,22 +141,19 @@ data class Database(val pointlessVariable: Int) : Parcelable {
     }
 
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(-1)
-        parcel.writeTypedList(allUsers)
-    }
+    companion object : Parceler<Database> {
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Database> {
-        override fun createFromParcel(parcel: Parcel): Database {
-            return Database(parcel)
+        override fun Database.write(parcel: Parcel, flags: Int) {
+            parcel.writeInt(-1)
+            parcel.writeTypedList(allUsers)
         }
 
-        override fun newArray(size: Int): Array<Database?> {
-            return arrayOfNulls(size)
+        override fun create(parcel: Parcel): Database {
+            val point = parcel.readInt()
+            var allUsers: ArrayList<User> = ArrayList()
+            parcel.readTypedList(allUsers, User.CREATOR)
+            return Database(point, allUsers)
+
         }
     }
 
