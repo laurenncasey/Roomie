@@ -19,8 +19,9 @@ class SignUp : AppCompatActivity() {
         val setpwd = findViewById<TextView>(R.id.setpwd)
         val confirmPwd = findViewById<TextView>(R.id.setpwd2)
         val email = findViewById<TextView>(R.id.inputemail)
-        val errorSignUp = findViewById<TextView>(R.id.error1)
-        val tempDB = Database(0)
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+
     //generate id
 
         var numOfUsers = 0
@@ -43,11 +44,12 @@ class SignUp : AppCompatActivity() {
                 numOfUsers += 1
                 //access object to add user to
 
-
-                tempDB.addToDB(newUser)
+                if (db != null) {
+                    db.addToDB(newUser)
+                }
                 val bundle = Bundle()
-                bundle.putParcelable("passedValue", newUser)
-                bundle.putParcelable("db", tempDB)
+                bundle.putString("passedValue", newUser.getusername())
+                bundle.putParcelable("db", db)
                 //Profile needs this user to add other preferences into their profile
                 startActivity(Intent(this, Profile::class.java))
             }
