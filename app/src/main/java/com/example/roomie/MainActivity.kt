@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 val tempUsername = usrInput.text.toString()
                 val tempPassword = pwdInput.text.toString()
                 val user: User? = DB.findUser(tempUsername, tempPassword)
+
                 if(user != null){
                     val bundle = Bundle()
                     bundle.putParcelable("passedValue", user)
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, Profile::class.java))
                 }
                 else{
-                    Toast.makeText(applicationContext, "Could not login retry username and password", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Could not login, retry username and password", Toast.LENGTH_SHORT).show()
                 }
 
         }

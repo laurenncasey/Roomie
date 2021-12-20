@@ -91,8 +91,47 @@ data class User(val usrname: String?) : Parcelable{
     fun getage():String{
         return age
     }
+    //clear all values
+    fun clear(){
 
+        var gender = ""
+        var profilePic :Uri? = Uri.EMPTY
+        var dormOne = ""
+        var dormTwo = ""
+        var dormThree = ""
+        var major = ""
+        var bio = ""
+        var clean = ""
+        var waketime = ""
+        var pets = ""
+        var alcohol = ""
+        var age = ""
+        var smoking = ""
+        var introverted = ""
+        var fullname = ""
+        var lgbt = ""
+        var matches : List<String> = emptyList()
+        var listOfYes : List<User> = emptyList()
+        var listOfNo : List<User> = emptyList()
+        var roommateGender = ""
+        var roommatelgbt = ""
+        var roommatesmoke = ""
+        var roommatedrink = ""
+        var roommateclean = ""
+        var roommateie = ""
+        var roommatepets = ""
+    }
 
+    fun resetRoommatePreferences() {
+
+        var roommateGender = ""
+        var roommatelgbt = ""
+        var roommatesmoke = ""
+        var roommatedrink = ""
+        var roommateclean = ""
+        var roommateie = ""
+        var roommatepets = ""
+    }
     //username
     fun setusername(setUsername : String){
         username = setUsername

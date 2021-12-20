@@ -31,7 +31,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:text="@string/set_username"
+                android:hint="@string/set_username"
                 android:textColor="#000000" />
 
             <EditText
@@ -43,7 +43,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:text="@string/set_password"
+                android:hint="@string/set_password"
                 android:textColor="#000000" />
 
             <EditText
@@ -55,7 +55,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:text="@string/confirm_password"
+                android:hint="@string/confirm_password"
                 android:textColor="#000000" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:inputType="textEmailSubject"
-                android:text="@string/email"
+                android:hint="@string/email"
                 android:textColor="#000000" />
 
             <Button

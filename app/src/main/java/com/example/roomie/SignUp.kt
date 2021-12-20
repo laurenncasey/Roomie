@@ -3,6 +3,7 @@ package com.example.roomie
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 //import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -25,14 +26,11 @@ class SignUp : AppCompatActivity() {
         var numOfUsers = 0
 
 
-    findViewById<Button>(R.id.login)?.setOnClickListener{
-        //CHECK NO NULL
-            startActivity(Intent(this, Profile::class.java))
-        }
         findViewById<Button>(R.id.signupBack).setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
         }
         findViewById<Button>(R.id.confirmsignUp).setOnClickListener {
+            Log.e("A", "Enter Confirm Sign up");
             //signing up creates a new user
             if(setpwd.text.toString() == confirmPwd.text.toString()) {//verify confirm and set pw are the same
                 val newUser = User(usrname = username.text.toString())
@@ -49,8 +47,6 @@ class SignUp : AppCompatActivity() {
                 bundle.putParcelable("db", tempDB)
                 //Profile needs this user to add other preferences into their profile
                 startActivity(Intent(this, Profile::class.java))
-
-
             }
 
         }
