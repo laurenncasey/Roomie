@@ -2,6 +2,7 @@ package com.example.roomie
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 
@@ -42,7 +43,6 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
                 if (allUsers.get(count).getintrovert() == user.getRIE()) {
                     tally += 1
                 }
-
 
                 if (tally >= 5) {
                     listOfMatches.plusElement(allUsers.get(count))
@@ -128,25 +128,25 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
         newUser3.setpassword("1235")
         newUser3.setusername("Test2")
         newUser3.setfullname("Jill Doe")
-        newUser1.setgender(1)
-        newUser1.setlgbt(1)
-        newUser1.setclean(1)
-        newUser1.setwake(1)
-        newUser1.setintrovert(1)
-        newUser1.setpets(1)
-        newUser1.setalco(1)
-        newUser1.setsmoke(1)
-        newUser1.setdormone(1)
-        newUser1.setdormtwo(2)
-        newUser1.setdormthree(3)
-        newUser1.setRClean(1)
-        newUser1.setRDrinks(1)
-        newUser1.setRGender(1)
-        newUser1.setRIE(1)
-        newUser1.setRLgbt(1)
-        newUser1.setRPets(1)
-        newUser1.setRSmokes(1)
-        newUser1.setRWaketime(1)
+        newUser3.setgender(1)
+        newUser3.setlgbt(1)
+        newUser3.setclean(1)
+        newUser3.setwake(1)
+        newUser3.setintrovert(1)
+        newUser3.setpets(1)
+        newUser3.setalco(1)
+        newUser3.setsmoke(1)
+        newUser3.setdormone(1)
+        newUser3.setdormtwo(2)
+        newUser3.setdormthree(3)
+        newUser3.setRClean(1)
+        newUser3.setRDrinks(1)
+        newUser3.setRGender(1)
+        newUser3.setRIE(1)
+        newUser3.setRLgbt(1)
+        newUser3.setRPets(1)
+        newUser3.setRSmokes(1)
+        newUser3.setRWaketime(1)
         addToDB(newUser3)
     }
 
@@ -168,8 +168,18 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
         return null
     }
 
-    fun removeUser(user: User) {
-        allUsers.drop(allUsers.indexOf(user))
+    fun removeUser(user: String) {
+        var count = 0
+        var stop = 0;
+        var tempUsers: ArrayList<User> = ArrayList()
+        while (count < allUsers.size) {
+            if (allUsers[count].getusername().equals(user)) {
+              //  tempUsers.add(allUsers.get(count))
+                stop = count
+            }
+            count += 1
+        }
+        allUsers.removeAt(stop);
     }
 
     fun resetRoommatePreferences(user: User) {

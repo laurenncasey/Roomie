@@ -94,43 +94,43 @@ data class User(val usrname: String?) : Parcelable{
     //clear all values
     fun clear(){
 
-        var gender = ""
-        var profilePic :Uri? = Uri.EMPTY
-        var dormOne = ""
-        var dormTwo = ""
-        var dormThree = ""
-        var major = ""
-        var bio = ""
-        var clean = ""
-        var waketime = ""
-        var pets = ""
-        var alcohol = ""
-        var age = ""
-        var smoking = ""
-        var introverted = ""
-        var fullname = ""
-        var lgbt = ""
-        var matches : List<String> = emptyList()
-        var listOfYes : List<User> = emptyList()
-        var listOfNo : List<User> = emptyList()
-        var roommateGender = ""
-        var roommatelgbt = ""
-        var roommatesmoke = ""
-        var roommatedrink = ""
-        var roommateclean = ""
-        var roommateie = ""
-        var roommatepets = ""
+        gender = -1
+        profilePic = Uri.EMPTY;
+        dormOne = -1
+        dormTwo = -1
+        dormThree = -1
+        major = ""
+        bio = ""
+        clean = -1
+        waketime = -1
+        pets = -1
+        alcohol = -1
+        age = ""
+        smoking = -1
+        introverted = -1
+        fullname = ""
+        lgbt = -1
+        matches = emptyList()
+        listOfYes = emptyList()
+        listOfNo = emptyList()
+        roommateGender = -1
+        roommatelgbt = -1
+        roommatesmoke = -1
+        roommatedrink = -1
+        roommateclean = -1
+        roommateie = -1
+        roommatepets = -1
     }
 
     fun resetRoommatePreferences() {
 
-        var roommateGender = -1
-        var roommatelgbt = -1
-        var roommatesmoke = -1
-        var roommatedrink = -1
-        var roommateclean = -1
-        var roommateie = -1
-        var roommatepets = -1
+        roommateGender = -1
+        roommatelgbt = -1
+        roommatesmoke = -1
+        roommatedrink = -1
+        roommateclean = -1
+        roommateie = -1
+        roommatepets = -1
     }
     //username
     fun setusername(setUsername : String){

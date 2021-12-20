@@ -44,11 +44,11 @@ class Settings : AppCompatActivity() {
             //save all information to database
             if (user != null) {
                 if (db != null) {
-                    db.getUser(username)?.resetRoommatePreferences()
+                    db.getUser(username)?.clear()
                 };
             }
 
-            Toast.makeText(applicationContext, "Roommate Preferences reset", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Profile reset", Toast.LENGTH_SHORT).show()
 
         }
 
@@ -56,7 +56,7 @@ class Settings : AppCompatActivity() {
             //save all information to database
             if (user != null) {
                 if (db != null) {
-                    db.getUser(username)?.clear()
+                    db.getUser(username)?.resetRoommatePreferences()
                 };
             }
 
@@ -65,7 +65,9 @@ class Settings : AppCompatActivity() {
 
         findViewById<Button>(R.id.delAcc).setOnClickListener{
             if (user != null) {
-                db?.removeUser( user)
+                if (username != null) {
+                    db?.removeUser( username)
+                }
                 val bundle2 = Bundle()
                 bundle2.putString("passedValue", username)
                 bundle2.putParcelable("db", db)

@@ -27,7 +27,17 @@ class MainActivity : AppCompatActivity() {
         val logInB = findViewById<Button>(R.id.login)
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
-        val DB = Database(0, ArrayList())
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
+        val DB: Database
+        if(db!=null) {
+            DB= db
+        }
+        else {
+            DB = Database(0, ArrayList())
+        }
 
        findViewById<Button>(R.id.signup).setOnClickListener{
            //HAVE TO PASS USER
