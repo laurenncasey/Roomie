@@ -2,6 +2,7 @@ package com.example.roomie
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 
@@ -42,7 +43,6 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
                 if (allUsers.get(count).getintrovert() == user.getRIE()) {
                     tally += 1
                 }
-
 
                 if (tally >= 5) {
                     listOfMatches.plusElement(allUsers.get(count))
@@ -166,8 +166,18 @@ data class Database(val pointlessVariable: Int, val usrs: ArrayList<User>) : Par
         return null
     }
 
-    fun removeUser(user: User) {
-        allUsers.drop(allUsers.indexOf(user))
+    fun removeUser(user: String) {
+        var count = 0
+        var stop = 0;
+        var tempUsers: ArrayList<User> = ArrayList()
+        while (count < allUsers.size) {
+            if (allUsers[count].getusername().equals(user)) {
+              //  tempUsers.add(allUsers.get(count))
+                stop = count
+            }
+            count += 1
+        }
+        allUsers.removeAt(stop);
     }
 
     fun resetRoommatePreferences(user: User) {
