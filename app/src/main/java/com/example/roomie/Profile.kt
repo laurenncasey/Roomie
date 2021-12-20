@@ -21,20 +21,22 @@ class Profile: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
-
-
         /**
          * Variables used
          */
         //NEED THIS TO PASS USER TO OTHER ACTIVITIES
-        val user: User? = intent.getParcelableExtra("passedValue")
+        val bundle = intent.extras;
+        val db: Database? = bundle?.getParcelable("db")
+        val username: String? = bundle?.getString("passedValue")
+        val user: User? = db?.getUser(username)
+            //intent.getParcelableExtra("passedValue")
         //val db: Database? = intent.getParcelableExtra("db")//not sure if this is needed but added anyway
         //db as Database                                          // Reasoning being I already added a user to the database in signup so by passing the
                                                                 // user here it should already be available in the database
         val disclaimerText: TextView = findViewById(R.id.disclaimer)
 
         // profile information to save to database
+        val fullname = findViewById<TextView>(R.id.name)
         val genderUser = findViewById<Spinner>(R.id.Gender)
         val cleanDirty = findViewById<Spinner>(R.id.cleanordirty)
         val birdOwl = findViewById<Spinner>(R.id.birdorowl)
@@ -46,7 +48,7 @@ class Profile: AppCompatActivity() {
         val dorm1 = findViewById<Spinner>(R.id.dorms)
         val dorm2 = findViewById<Spinner>(R.id.dorms2)
         val dorm3 = findViewById<Spinner>(R.id.dorms3)
-
+        fullname.text = user?.getfullname();
         disclaimerText.text =
             "Welcome to your profile. Here you can choose to provide us with any information to be shown in your profile to potential roommates. Any information not filled in will not be used in the matching algorithm, but the more information provided, the better results. "
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,18 +56,13 @@ class Profile: AppCompatActivity() {
          * Set profile's set values to it's default show values
          */
 
-
-
-
-
-
-
         /**
          * Sets profile setting and saves to db if "save" button is pressed
          */
         //sets users full name
         findViewById<TextView>(R.id.name).setOnClickListener {
-            user?.setusername(findViewById<TextView>(R.id.name).text.toString())
+            db?.getUser(username)?.setusername(findViewById<TextView>(R.id.name).text.toString())
+            Toast.makeText(applicationContext, "TextView clicked", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -78,7 +75,7 @@ class Profile: AppCompatActivity() {
         var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 profilePicker.setImageURI(result.data?.data)
-                user?.setprofilepic(result.data?.data)
+                db?.getUser(username)?.setprofilepic(result.data?.data)
             }
         }
         fun openYourActivity() {
@@ -95,50 +92,40 @@ class Profile: AppCompatActivity() {
          */
         findViewById<Button>(R.id.saveprof).setOnClickListener {
 
-            user?.setgender(genderUser.selectedItem.toString())
-
+            db?.getUser(username)?.setfullname(fullname.text.toString())
+            db?.getUser(username)?.setgender(genderUser.selectedItem.toString())
             //picture working???
-            user?.setprofilepic((Uri.parse(profilePicker.toString())))
-            user?.setclean(cleanDirty.selectedItem.toString())
-            user?.setwake(birdOwl.selectedItem.toString())
-            user?.setintrovert(ie.selectedItem.toString())
-            user?.setpets(pets.selectedItem.toString())
-            user?.setalco(drinks.selectedItem.toString())
-            user?.setsmoke(smokes.selectedItem.toString())
-            user?.setlgbt(lgbt.selectedItem.toString())
-            user?.setdormone(dorm1.selectedItem.toString())
-            user?.setdormtwo(dorm2.selectedItem.toString())
-            user?.setdormthree(dorm3.selectedItem.toString())
+            db?.getUser(username)?.setprofilepic((Uri.parse(profilePicker.toString())))
+            db?.getUser(username)?.setclean(cleanDirty.selectedItem.toString())
+            db?.getUser(username)?.setwake(birdOwl.selectedItem.toString())
+            db?.getUser(username)?.setintrovert(ie.selectedItem.toString())
+            db?.getUser(username)?.setpets(pets.selectedItem.toString())
+            db?.getUser(username)?.setalco(drinks.selectedItem.toString())
+            db?.getUser(username)?.setsmoke(smokes.selectedItem.toString())
+            db?.getUser(username)?.setlgbt(lgbt.selectedItem.toString())
+            db?.getUser(username)?.setdormone(dorm1.selectedItem.toString())
+            db?.getUser(username)?.setdormtwo(dorm2.selectedItem.toString())
+            db?.getUser(username)?.setdormthree(dorm3.selectedItem.toString())
             Toast.makeText(applicationContext, "Profile Saved", Toast.LENGTH_SHORT).show()
 
         }
-
-
         /**
          * setRoommate : if the set roommate preferences button is pressed
          * takes the user to the roommate preferences information input activity
          */
         findViewById<Button>(R.id.roomiePref).setOnClickListener {
             val intent = Intent(this, RoommatePref::class.java)
-            val bundle = Bundle()
-            bundle.putParcelable("passedValue", user)
             intent.putExtra("passed", bundle)
             startActivity(intent)
         }
-
-
         /**
          * settings: if "..." button is selected, bring user to settings activity
          */
         findViewById<Button>(R.id.settings).setOnClickListener {
             //passing user info into settings for deletion and things
             val intent = Intent(this, Settings::class.java)
-            val bundle = Bundle()
-            bundle.putParcelable("passedValue", user)
             intent.putExtra("passed", bundle)
             startActivity(intent)
         }
-
-
     }
 }

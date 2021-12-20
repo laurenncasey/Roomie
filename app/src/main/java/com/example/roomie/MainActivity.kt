@@ -3,12 +3,11 @@ package com.example.roomie
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
+import android.os.Parcel
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.room.Room
-import androidx.fragment.app.Fragment
+
 //import com.google.firebase.FirebaseOptions
 //import com.google.firebase.auth.FirebaseAuthException
 //import com.google.firebase.database.FirebaseDatabase
@@ -30,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         val forgotPwdB = findViewById<Button>(R.id.forgotpwd)
         val usrInput= findViewById<TextView>(R.id.usrname)
         val pwdInput = findViewById<TextView>(R.id.pwd)
-
         val DB = Database(0)
 
        findViewById<Button>(R.id.signup).setOnClickListener{
@@ -51,9 +49,11 @@ class MainActivity : AppCompatActivity() {
 
                 if(user != null){
                     val bundle = Bundle()
-                    bundle.putParcelable("passedValue", user)
+                    bundle.putString("passedValue", user.getusername())
                     bundle.putParcelable("db", DB)
-                    startActivity(Intent(this, Profile::class.java))
+                    intent = Intent(this@MainActivity, Profile::class.java)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
                 }
                 else{
                     Toast.makeText(applicationContext, "Could not login, retry username and password", Toast.LENGTH_SHORT).show()

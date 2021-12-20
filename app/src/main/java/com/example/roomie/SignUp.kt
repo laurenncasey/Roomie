@@ -46,7 +46,7 @@ class SignUp : AppCompatActivity() {
 
                 tempDB.addToDB(newUser)
                 val bundle = Bundle()
-                bundle.putParcelable("passedValue", newUser)
+                bundle.putString("passedValue", newUser.getusername())
                 bundle.putParcelable("db", tempDB)
                 //Profile needs this user to add other preferences into their profile
                 startActivity(Intent(this, Profile::class.java))

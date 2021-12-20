@@ -155,7 +155,7 @@ data class User(val usrname: String?) : Parcelable{
 
     }
     fun getpassword():String{
-        return gender
+        return password
     }
 
     //email
